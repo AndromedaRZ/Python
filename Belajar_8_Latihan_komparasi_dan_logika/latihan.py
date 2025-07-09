@@ -18,7 +18,7 @@ print('Lebih dari 0:', isLebihdari0)
 # Kurang dari 5
 isKurangdari5 = inputUser < 5
 print('Kurang dari 5:', isKurangdari5)
-
+ 
 # Lebih dari 8
 isLebihdari8 = inputUser > 8
 print('Lebih dari 8:', isLebihdari8)
