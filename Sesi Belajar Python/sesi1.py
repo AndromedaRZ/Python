@@ -20,9 +20,19 @@ print(f'''Halo! {nama_anda}, coba perhatikan goa di bawah ini
       
       |_|  |_|  |_|  |_|
       ''')
-print("Menurut kamu, di goa nomor berapakah CUYPY berada? [1 / 2 / 3 / 4 ]")
 
-jawaban = int(input("Masukkan jawabanmu: "))
+while True:
+    print("Menurut kamu, di goa nomor berapakah CUYPY berada? [1 / 2 / 3 / 4 ]")
+    jawaban = int(input("Masukkan jawabanmu: "))
+    print()
+    konfirmasi = input(f"Apakah kamu yakin bahwa CUYPY ada di goa nomor {jawaban} [y/n]")
+    print()
+    if konfirmasi == "y":
+        break
+    elif konfirmasi == "n":
+        print("Tidak yakin!, coba lagi")
+    else:
+        print("Silahkan masukkan jawaban yang benar! y/n")
 
 if jawaban == posisi_cuypy:
     print(f"Selamat {nama_anda}, kamu menemukan CUYPY di goa nomor {posisi_cuypy} dan pilihanmu adalah goa nomor {jawaban}")
