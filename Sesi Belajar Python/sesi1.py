@@ -37,4 +37,4 @@ while True:
 if jawaban == posisi_cuypy:
     print(f"Selamat {nama_anda}, kamu menemukan CUYPY di goa nomor {posisi_cuypy} dan pilihanmu adalah goa nomor {jawaban}")
 else:
-    print(f"Maaf {nama_anda}, CUYPY tidak berada di goa yang kamu pilih, tapi ada di goa nomor {posisi_cuypy}, sementara kamu memilih goa nomor {jawaban}")  
+    print(f"Maaf {nama_anda}, CUYPY tidak berada di goa yang kamu pilih, tapi ada di goa nomor {posisi_cuypy}, sementara kamu memilih goa nomor {jawaban}")
