@@ -30,8 +30,12 @@ konfirmasi = input(f"Apakah kamu yakin bahwa CUYPY ada di goa nomor {jawaban}? [
 if konfirmasi == "n":
     print("Silahkan mulai ulang programnya")
     sys.exit()
-else:
+elif konfirmasi == "y":
     if jawaban == posisi_cuypy:
         print(f"Selamat {nama_anda}, kamu menemukan CUYPY di goa nomor {posisi_cuypy} dan pilihanmu adalah goa nomor {jawaban}")
     else:
         print(f"Maaf {nama_anda}, CUYPY tidak berada di goa yang kamu pilih, tapi ada di goa nomor {posisi_cuypy}, sementara kamu memilih goa nomor {jawaban}")
+
+else:
+    print("Silahkan mulai ulang programnya")
+    sys.exit()
