@@ -20,11 +20,12 @@ nama_anda = input("Masukkan nama anda: ")
 print(f"\nHalo! {nama_anda}, coba perhatikan goa di bawah ini\n")
 
 bentuk_goa = "|_|"
-goa = [bentuk_goa] * 4
+goa_kosong = [bentuk_goa] * 4 # goa ini akan tetap kosong
+goa = goa_kosong.copy() # goa ini akan menentukan dimana cuypy berada
 
 goa[posisi_cuypy - 1] = "|0_0|"
 
-print(goa)
+print(goa_kosong)
 
 print("\nMenurut kamu, di goa nomor berapakah CUYPY berada? [1 / 2 / 3 / 4 ]\n")
 
@@ -37,10 +38,9 @@ if konfirmasi == "n":
     sys.exit()
 elif konfirmasi == "y":
     if jawaban == posisi_cuypy:
-        print(f"Selamat {nama_anda}, kamu menemukan CUYPY di goa nomor {posisi_cuypy} dan pilihanmu adalah goa nomor {jawaban}")
+        print(f"{goa}, \nSelamat kamu menang!")
     else:
-        print(f"Maaf {nama_anda}, CUYPY tidak berada di goa yang kamu pilih, tapi ada di goa nomor {posisi_cuypy}, sementara kamu memilih goa nomor {jawaban}")
-
+        print(f"{goa}, \nMaaf kamu kalah")
 else:
     print("Silahkan mulai ulang programnya")
     sys.exit()
