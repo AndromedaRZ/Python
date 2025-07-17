@@ -1,6 +1,5 @@
 # Belajar python sesi 2
 import random
-import sys
 
 welcome_message = "Selamat datang di CUYPY GAMES"
 posisi_cuypy = random.randint(1, 4)
@@ -22,8 +21,10 @@ print(f"\nHalo! {nama_anda}, coba perhatikan goa di bawah ini\n")
 bentuk_goa = "|_|"
 goa_kosong = [bentuk_goa] * 4 # goa ini akan tetap kosong
 goa = goa_kosong.copy() # goa ini akan menentukan dimana cuypy berada
-
 goa[posisi_cuypy - 1] = "|0_0|"
+
+goa_kosong = ' '.join(goa_kosong) # perintah 'join' akan memasukkan spasi (yang diantara tanda kutip sebelumnya) ke dalam nilai atau array nya pada variabel goa_kosong dan otomatis akan menghapus sisa bentuk array seperti siku-siku dan tanda kutip pada output goa kosongnya
+goa = ' '.join(goa)
 
 print(goa_kosong)
 
@@ -35,7 +36,7 @@ konfirmasi = input(f"Apakah kamu yakin bahwa CUYPY ada di goa nomor {jawaban}? [
 
 if konfirmasi == "n":
     print("Silahkan mulai ulang programnya")
-    sys.exit()
+    exit()
 elif konfirmasi == "y":
     if jawaban == posisi_cuypy:
         print(f"{goa}, \nSelamat kamu menang!")
@@ -43,4 +44,4 @@ elif konfirmasi == "y":
         print(f"{goa}, \nMaaf kamu kalah")
 else:
     print("Silahkan mulai ulang programnya")
-    sys.exit()
+    exit()
