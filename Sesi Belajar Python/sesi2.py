@@ -1,47 +1,54 @@
 # Belajar python sesi 2
 import random
+from libs import welcome_message # from (nama file nya tanpa py) lalu import (pilih function yang manan yang ingin kita ambil dari file libs.py tersebut)
 
-welcome_message = "Selamat datang di CUYPY GAMES"
-posisi_cuypy = random.randint(1, 4)
+welcome_message("WELCOME TO CUYPY")
 
-print("***********************************")
-print(f"** {welcome_message} **")
-print("***********************************")
-
-# nomor_saya = input("Masukkan angka yang telah ditentukan :")
-
-# if nomor_saya == 4:
-#     print(f"Yes, benar nomor saya adalah {nomor_saya}")
-# else:
-#     print(f"Yah, nomor saya bukan {nomor_saya}")
 
 nama_anda = input("Masukkan nama anda: ")
-print(f"\nHalo! {nama_anda}, coba perhatikan goa di bawah ini\n")
 
-bentuk_goa = "|_|"
-goa_kosong = [bentuk_goa] * 4 # goa ini akan tetap kosong
-goa = goa_kosong.copy() # goa ini akan menentukan dimana cuypy berada
-goa[posisi_cuypy - 1] = "|0_0|"
+while nama_anda == "":
+    nama_anda = input("Masukkan nama anda terlebih dahulu: ")
+    
+while True:
+    print(f"\nHalo! {nama_anda}, coba perhatikan goa di bawah ini\n")
 
-goa_kosong = ' '.join(goa_kosong) # perintah 'join' akan memasukkan spasi (yang diantara tanda kutip sebelumnya) ke dalam nilai atau array nya pada variabel goa_kosong dan otomatis akan menghapus sisa bentuk array seperti siku-siku dan tanda kutip pada output goa kosongnya
-goa = ' '.join(goa)
+    posisi_cuypy = random.randint(1, 4)
+    bentuk_goa = "|_|"
+    goa_kosong = [bentuk_goa] * 4 # goa ini akan tetap kosong
+    goa = goa_kosong.copy() # goa ini akan menentukan dimana cuypy berada
+    goa[posisi_cuypy - 1] = "|0_0|"
 
-print(goa_kosong)
+    goa_kosong = ' '.join(goa_kosong) # perintah 'join' akan memasukkan spasi (yang diantara tanda kutip sebelumnya) ke dalam nilai atau array nya pada variabel goa_kosong dan otomatis akan menghapus sisa bentuk array seperti siku-siku dan tanda kutip pada output goa kosongnya
+    goa = ' '.join(goa)
 
-print("\nMenurut kamu, di goa nomor berapakah CUYPY berada? [1 / 2 / 3 / 4 ]\n")
+    print(goa_kosong)
+    print("\nMenurut kamu, di goa nomor berapakah CUYPY berada? [1 / 2 / 3 / 4 ]\n")
 
-jawaban = int(input("Masukkan jawabanmu: "))
+    jawaban = int(input("Masukkan jawabanmu: "))
 
-konfirmasi = input(f"Apakah kamu yakin bahwa CUYPY ada di goa nomor {jawaban}? [y/n]:")
+    konfirmasi = input(f"Apakah kamu yakin bahwa CUYPY ada di goa nomor {jawaban}? [y/n]: ")
 
-if konfirmasi == "n":
-    print("Silahkan mulai ulang programnya")
-    exit()
-elif konfirmasi == "y":
-    if jawaban == posisi_cuypy:
-        print(f"{goa}, \nSelamat kamu menang!")
+    if konfirmasi == "n":
+        print("Silahkan mulai ulang programnya")
+        exit()
+    elif konfirmasi == "y":
+        if jawaban == posisi_cuypy:
+            print(f" \n {goa} \n\n Selamat kamu menang!")
+        else:
+            print(f"\n {goa} \n\n Maaf kamu kalah")
     else:
-        print(f"{goa}, \nMaaf kamu kalah")
-else:
-    print("Silahkan mulai ulang programnya")
-    exit()
+        print("Silahkan mulai ulang programnya")
+        exit()
+        
+    play_again = input("\nApakah kamu ingin mengulangi permainannya? [y/n]: ")
+    if play_again == "n":
+        break
+    while play_again != "y": 
+        play_again = input("\nApakah kamu ingin mengulangi permainannya? [y/n]: ")
+        if play_again == "n":
+            print("Program selesai!")
+            exit()
+
+print("Program selesai!")
+    
