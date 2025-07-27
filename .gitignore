@@ -1,0 +1,10 @@
+# ignore folder/direcorty
+__pycache__/
+'Eksperimen Python'/
+.ipynb_checkpoints
+
+# ignore file spesifik
+tes.py
+sesi2.py
+sesi3.py
+
