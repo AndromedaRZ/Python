@@ -5,6 +5,7 @@
 # string
 nama = "ucup"
 format_str = f"Hello, {nama}" # kita bisa menambahkan huruf f di depan string agar nantinya di dalam string tersebut bisa kita sisipkan variabel secara langsung dengan menggunakan kurung kurawal dan nama variabelnya
+# penyisipan variabel tersebut bisa kita sebut sebagai placeholder
 # cara ini bisa disebut dengan f-string atau format string
 # f-string ini sangat berguna untuk mempersingkat kode, dan kita bisa menghindari penggunaan simbol tambah (+) dan koma (,) yang berlebih
 print(format_str)
