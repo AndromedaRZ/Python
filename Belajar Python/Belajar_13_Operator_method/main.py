@@ -37,4 +37,50 @@ isspace() = untuk mengecek apakah ada string kosong seperti spasi, tab, atau new
 istitle() = untuk mengecek apakah setiap kata dalam string dimulai dengan huruf besar
 '''
 
+judul = "It Is Okay Not To Be Orkay"
+cek_judul = judul.istitle() # method .istitle() akan mengecek apakah setiap kata dalam string 'judul' dimulai dengan huruf besar, jika iya maka hasilnya True, jika tidak maka hasilnya False, hasilnya juga akan menjadi boolean
 
+print(f"'{judul}' is title = {str(cek_judul)}")
+
+## mengecek komponen .startwith() dan .endswith()
+
+cek_start = "Sangjangnim Oppa".startswith("Sangjangnim") # method .startswith() akan mengecek apakah string dalam variabel 'cek_start' dimulai dengan substring atau karakter yang ditetapkan atau tidak, jika iya maka hasilnya True, jika tidak maka hasilnya False
+print("start =", str(cek_start))
+
+cek_end = "Sangjangnim Oppak".endswith("Oppak") # method .endswith() akan mengecek apakah string dalam variabel 'cek_end' diakhiri dengan substring atau karakter yang ditetapkan atau tidak, jika iya maka hasilnya True, jika tidak maka hasilnya False
+print("end =", str(cek_end))
+
+## penggabungan komponen .join() dan .split()
+pisah = ['aku', 'sayang', 'kamu']
+print(pisah)
+
+gabung = ' '.join(pisah) # method .join() akan menggabungkan setiap isi di dalam list 'pisah' dengan pemisah yang ditentukan, dalam hal ini pemisahnya adalah tanda spasi (  )
+print("gabungan =", gabung) #  hasil dari method .join() akan mengubah data list tadi menjadi string biasa
+
+
+gabungan = "aku sayang kamu"
+print(gabungan.split( )) # method .split() akan memisahkan string 'gabungan' menjadi list berdasarkan pemisah yang ditentukan, jika tidak ada pemisah yang ditentukan maka akan memisahkan meggunakan spasi secara default
+
+# alokasi karakter
+print(5*"=" + "data" + 5*"=") # mengulang karakter '=' sebanyak 5 kali, lalu menambahkan data, dan mengulang karakter '=' sebanyak 5 kali lagi
+
+## alokasi karakter dengan .rjust(), .ljust(), dan .center()
+
+kanan = "kanan".rjust(10) # angka '10' menunjukkan panjang total string yang diinginkan, jika panjang string 'kanan' kurang dari 10 karakter, maka sisanya akan diisi dengan spasi
+print("'"+kanan+"'") # .rjust(10) akan menggeser string 'kanan' ke kanan sehingga panjang totalnya menjadi 10 karakter, sisanya diisi dengan spasi
+
+kiri = "kiri".ljust(10) # .ljust(10) akan menggeser string 'kiri' ke kiri sehingga panjang totalnya menjadi 10 karakter, sisanya diisi dengan spasi
+print("'"+kiri+"'") # .ljust(10) akan menggeser string 'kiri' ke kiri sehingga panjang totalnya menjadi 10 karakter, sisanya diisi dengan spasi
+
+tengah = "tengah".center(10) # .center(10) akan menggeser string 'tengah' ke tengah sehingga panjang totalnya menjadi 10 karakter, sisanya diisi dengan spasi
+print("'"+tengah+"'") # .center(10) akan menggeser string 'tengah' ke tengah sehingga panjang totalnya menjadi 10 karakter, sisanya diisi dengan spasi
+
+# dalam ketiga perintah di atas, jika panjang string dalam variabel kurang dari angka yang ditentukan (dalam kasus ini 10), maka sisa karakternya secara otomatis akan diisi dengan spasi, tetapi jika panjang string lebih dari angka yang ditentukan, maka string tersebut tidak akan terpotong dan tetap utuh.
+
+# kita juga bisa menggunakan karakter lain sebagai pengganti spasi
+tengah = "tengah".center(10, '-') # menggunakan tanda '-' sebagai pengganti spasi
+print(f"'{tengah}'") # hasilnya akan menggeser string 'tengah' ke tengah dengan panjang total 10 karakter, sisanya diisi dengan tanda '-'
+
+# kebalikannya -> .strip()
+tengah = tengah.strip("-") # .strip() akan menghapus karakter yang ditentukan dari awal dan akhir string, dalam hal ini karakter '-' dihapus dari awal dan akhir string 'tengah'
+print(f"'{tengah}'") # hasilnya akan menjadi 'tengah' tanpa tanda '-' di awal dan akhir
