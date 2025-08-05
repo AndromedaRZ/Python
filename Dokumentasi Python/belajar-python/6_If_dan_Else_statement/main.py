@@ -2,13 +2,14 @@
 
 # singkatnya, if dan else bisa kita gunakan untuk membuat percabangan dari alur program yang kita buat dengan kondisi yang berbeda-beda
 
-# 1. if-nya
-# 2. kondisinya
-# 3. aksinya
+# 1. if (kondisinya)
+#       aksinya ketika kondisi if terpenuhi
+# 2. else (else akan tereksekusi jika kondisi di if tidak terpenuhi)
+#       aksinya
 
 nama = input("Siapa nama anda? ")
 
-# 1. program if inline
+# 1. program if inline/satu baris
 # if nama=="ucup" : print("Kamu ganteng abieezzz!!!")
 # print(f"terima kasih {nama}")
 
