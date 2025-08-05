@@ -24,3 +24,4 @@ for item in data:
 print(data[0]) # akan print index ke 0 dari list di dalam data
 print(data[1]) # akan print index ke 1 dari list di dalam data
 print(data[2]) # akan print index ke 2 dari list di dalam data
+
