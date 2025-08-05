@@ -1,28 +1,41 @@
-# program kalkulator sederhana
+# program kalkulator sederhana menggunakan if, elif, dan else statement
 
-print("====Kalkulator Sederhana====")
-angka1 = int(input("Masukkan angka pertama: "))
-angka2 = int(input("Masukkan angka kedua: "))
+while True:
+    print("\n====Kalkulator Sederhana====")
+    angka1 = int(input("Masukkan angka pertama: "))
+    print("\n1) Penjumlahan (+)")
+    print("2) Pengurangan (-)")
+    print("3) Perkalian   (*)")
+    print("4) Pembagian   (/)")
 
-print("1. Tambah")
-print("2. Kurang")
-print("3. Kali")
-print("4. Bagi")
-pilih = int(input("Pilih operasi yang ingin digunakan [1/2/3/4]: "))
-
-
-if pilih == 1:
-    hasil = angka1 + angka2
-    print(f"Hasilnya adalah: {hasil}")
-elif pilih == 2:
-    hasil = angka1 - angka2
-    print(f"Hasilnya adalah : {hasil}")
-elif pilih == 3:
-    hasil = angka1 * angka2
-    print(f"Hasilnya adalah: {hasil}")
-elif pilih == 4:
-    hasil = angka1 / angka2
-    print(f"Hasilnya adalah: {hasil}")
-else:
-    print("Pilihan tidak valid, silahkan mulai ulang programnya")
+    operasi = int(input("Pilih operasi yang ingin digunakan [1/2/3/4]: "))
     
+    angka2 = int(input("\nMasukkan angka kedua: "))
+
+    if operasi == 1:
+        hasil = angka1 + angka2
+        print(f"\nHasilnya adalah {hasil}")
+    elif operasi == 2:
+        hasil = angka1 - angka2
+        print(f"\nHasilnya adalah {hasil}")
+    elif operasi == 3:
+        hasil = angka1 * angka2
+        print(f"\nHasilnya adalah {hasil}")
+    elif operasi == 4:
+        hasil = angka1 / angka2
+        print(f"\nHasilnya adalah {hasil}")
+    else:
+        print("Program dihentikan, ada kesalahan teknis saat penginputan operasi")
+    
+    pilihan = input("Apakah ingin menghitung lagi? [y/n]: ")
+    if pilihan == "n":
+        break
+    
+    while pilihan != "y":
+        pilihan = input("Apakah ingin menghitung lagi? [y/n]: ")
+        if pilihan == "n":
+            print("Prorgam hitungan dihentikan")
+            exit()
+        
+        
+print("Prorgam hitungan dihentikan")
