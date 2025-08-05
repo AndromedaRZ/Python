@@ -18,7 +18,7 @@ program selanjutnya
 # 1. program if inline
 # if nama == "ucup": print("ucup ganteng abiez!!!")
 # print(f"Terima kasih {nama}")
-
+ 
 # 2. program if dengan indentation
 # if nama == "ucup": # kondisi yang harus terpenuhi
 #     print("kamu ganteng abiez!!!!") # aksinya jika kondisi di atas terpenuhi
