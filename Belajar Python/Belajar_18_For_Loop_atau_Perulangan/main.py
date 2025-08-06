@@ -12,14 +12,14 @@ for i in angka: # i akan mengikuti nilai yang ada didalam variabel angka
 print("Akhir dari program 1\n")
 
 # in dengan range
-angka_range = range(5)
+angka_range = range(5) # saat diprint, angka yang keluar bukan dari 1, melainkan dari angka 0 dan seterusnya sampai angka 4 karena hitungannya 5 (walaupun angka 5 tidak termasuk)
 
 for i in angka_range:
     print(f"i sekarang adalah {i}")
     
 print("Akhir dari program 2\n")
 
-angka_range = range(1, 10) # dalam peraturan range, ada 3 input yang bisa dimasukkan, contoh: (1,10,2), keterangan: (start, step, stop) angka 1 berarti awal mulai angkanya dari berapa, lalu angka 10 berarti dimana angkanya akan berhenti, dan angka 2 berarti step atau berapa jarak setiap angka ketika diprint nanti
+angka_range = range(1, 10) # dalam parameter range, ada 3 input yang bisa dimasukkan, contoh: (1,10,2), keterangan: (start, stop, step) angka 1 berarti berapa nilai awalnya, lalu angka 10 berarti dimana nilainya akan berhenti, dan angka 2 berarti step atau berapa selang atau jarak antar nilai ketika diprint nanti
 
 for i in angka_range:
     print(f"i sekarang adalah {i}")
@@ -34,3 +34,5 @@ for huruf in data_str:
     print(huruf) # perintah ini akan melakukan print dari nilai atau string yang ada didalam variabel data_str, tetapi print nya berbentuk perulangan atau loop mulai dari huruf pertama sampai huruf terakhir menurun kebawah
     
 print("Akhir dari program 4")
+
+
