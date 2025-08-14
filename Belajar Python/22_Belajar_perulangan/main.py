@@ -36,3 +36,23 @@ while True:
 
     if count > sisi: # akan menghentikan program jika nilai 'count' lebih besar dari nilai 'sisi'
         break 
+
+# 3. Hanya ganjil saja
+
+print("\nsegitiga ganjil saja")
+count = 1
+spasi = int(sisi / 2)
+while True:
+    if count % 2: # akan print jika ganjil 
+        print(" " * spasi, "*" * count)
+        spasi -= 1
+        count += 1
+        
+    else: # akan mengskip perulangan jika genap
+        count += 1
+        continue
+
+    if count > sisi: # akan menghentikan program jika nilai 'count' lebih besar dari nilai 'sisi'
+        break
+
+
