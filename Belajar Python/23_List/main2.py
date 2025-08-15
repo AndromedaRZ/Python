@@ -1,22 +1,50 @@
-# Materi tambahan mengenai List
+# operasi
 
-buah = ["jeruk", "pisang", "semangka", "kelapa"] # di dalam list 'buah' ini berisi beberapa string
+# index  0,(-3)  1,(-2)    2,(-1)
+data = ["Ucup", "Otong", "Dudung"]
 
-for item in buah: # kondisi untuk setiap item atau isi di dalam list buah, lakukan:
-    print(item) # akan melakukan print pada setiap item atau isi list 'buah' tersebut
+# mengambil data dari list ini menggunakan variabel lain
+data_0 = data[0]
+print(f"data pertama (index ke-0) = {data_0}")
 
-# Misalkan kita hanya ingin mengambil salah satu item dari list buah tersebut, maka kita bisa menggunakan perintah berikut:
-print(buah[0]) # nama pemanggilannya disebut index
+data_terakhir = data[-1] # jika kita tidak tahu berapa index terakhir yang ada di dalam variabel 'data', maka kita bisa menggunakan index -1
+print(f"data terakhir (index ke-2) = {data_terakhir}")
 
-'''
-dalam python, index dimulai dari angka 0,1,2 dan seterusnya, jadi keterangan urutan index dalam list 'buah' adalah sebagai berikut
-index ke-1 = jeruk
-index ke-2 = pisang
-index ke-3 = semangka
-index ke-4 = kelapa
-'''
+data_ucup = data[-3] # akan mengambil nilai index pertama di dalam variabel 'data'
 
-# kita bisa melakukan print untuk setiap index menggunakan for loop seperti berikut: 
-for index, item in enumerate(buah): 
-    print(f"index ke-{index} : {item}")
+# mengambil info jumlah data dalam list
+panjang_data = len(data) # akan mendeteksi berapa jumlah data atau nilai yang ada di dalam variabel 'data'
+print(f"panjang data = {panjang_data}")
+
+## Manipulasi data list
+
+# menambahkan item di dalam list sesuai posisi
+print(f"data sebelum ditambah = \n{data}")
+
+data.insert(1, "Asep") # format (posisi index, data yang ingin ditambahkan)
+print(f"data sesudah ditambah = \n{data}")
+
+# menambah item di akhir list
+data.append("jamal")
+print(f"data sesudah ditambah lagi = \n{data}")
+
+# menambah list dengan list
+data_baru = ["Ujang", "Yusuf", "Dadang"]
+data.extend(data_baru) # menambah nilai atau item yang ada di dalam variabel 'data' dengan nilai yang ada di dalam 'data_baru'
+
+## merubah data
+# mengubah nilai index ke-2 menjadi 'michael'
+data[2] = "michael"
+print(f"data yang berubah = \n{data}")
+
+## remove data
+# menghapus data
+data.remove("Ujang") # formaat (masukkan data atau nilai yang ingin dihapus dari suatu variabel)
+print(f"data yang sudah dihapus = \n{data}")
+# jika data yang ingin dihapus tidak ada, maka hasilnya akan error
+
+# menghapus data paling belakang
+data_akhir = data.pop()
+print(f"data yang dihapus = {data_akhir}")
+print (f'data akhir = \n{data}')
 
