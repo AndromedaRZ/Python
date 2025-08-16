@@ -4,7 +4,8 @@ def format_awal(num):
     """Mengubah float menjadi int jika nilai desimalnya 0"""
     if isinstance(num, float) and num.is_integer():
         return int(num)
-    return num
+    # Format angka dengan pemisah ribuan titik
+    # return f"{num:,}".replace(",", ".")
 
 def format_number(num):
     """Mengubah float menjadi int jika desimalnya 0, 
@@ -14,7 +15,8 @@ def format_number(num):
             return int(num)
         else:
             return round(num, 2)
-    return num
+    # Format angka dengan pemisah ribuan titik
+    # return f"{num:,}".replace(",", ".")
 
 print('''
 Pilih satuan ukuran panjang awal yang ingin dikonversi
