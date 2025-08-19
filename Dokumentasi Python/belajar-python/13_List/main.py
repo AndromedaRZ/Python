@@ -36,11 +36,11 @@ list_pake_for = [i**2 for i in range(0,10)] # i pangkat 2 di mana i yang ada di 
 print(list_pake_for)
 
 # membuat list pake for pake if
-list_pake_for_if = [i for i in range(0,10) if i != 5] # fungsi if di sini untuk menghilangkan angka 5
+list_pake_for_if = [i for i in range(0,10) if i != 5] # fungsi if di sini untuk menghilangkan angka 5 dari range yang kita tentukan
 print(list_pake_for_if)
 
-list_pake_for_if = [i for i in range(0,10) if i % 2 == 0] # di sini untuk membuat outputnya hanya bilangan genap (dengan cara menghitungnya menggunakan modulus dan jika di modulus 2 hasilnya 0 berarti itu bilangan genap)
+list_pake_for_if = [i for i in range(0,10) if i % 2 == 0] # fungsi if di sini adalah untuk membuat outputnya hanya bilangan genap (dengan cara menghitungnya menggunakan modulus dan jika di modulus 2 hasilnya 0 berarti itu bilangan genap)
 print(list_pake_for_if)
 
-list_pake_for_if = [i for i in range(0,10) if i % 2 != 0] # dan di sini untuk membuat outputnya hanya bilangan ganjil (dengan cara menghitungnya menggunakan modulus dan jika di modulus 2 hasilnya bukan 0 berarti itu bilangan ganjil)
+list_pake_for_if = [i for i in range(0,10) if i % 2 != 0] # fungsi if di sini adalah untuk membuat outputnya hanya bilangan ganjil (dengan cara menghitungnya menggunakan modulus dan jika di modulus 2 hasilnya bukan 0 berarti itu bilangan ganjil)
 print(list_pake_for_if)
