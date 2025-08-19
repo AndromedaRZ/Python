@@ -19,7 +19,7 @@ while True:
     for index,buku in enumerate(list_buku): # enumerate berfungsi untuk memunculkan index setiap loopnya di dalam for loop
         print(f"{index+1}\t| {buku[0]}\t| {buku[1]}") # kita tinggal buat printnya seperti ini dan dengan menambahkan lokasi index untuk judul dan penulis karena kedua variabel tersebut berada di dalam list_buku
         
-    isLanjut = input(f"\nApakah mau dilanjutkan? [y/n]: ")
+    isLanjut = input("\nApakah mau dilanjutkan? [y/n]: ")
     if isLanjut == "n":
         break
 
