@@ -16,7 +16,7 @@ print(data_boolean)
 data_campuran = [3, "ribu", 5, "bola"]
 print(data_campuran)
 
-# cara alternatif membuat list 
+# cara alternatif membuat list
 data_range = range(0, 10)
 print(data_range)
 data_list = list(data_range)
