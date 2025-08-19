@@ -20,26 +20,31 @@ while True:
     if choice == 1: # jika user memilih untuk menambahkan tugas baru 
         tugas_tambah = input("\nMasukkan tugas yang ingin anda tambahkan: ")
         tugas.append(tugas_tambah)
-        print('Tugas anda sudah ditambahkan')
-        
+        print(f'\n=== Tugas {tugas_tambah} sudah ditambahkan ===')
+
     elif choice == 2: # Jika user memilih untuk melihat semua tugas yang sudah dibuat
         if tugas == []: # Jika user ingin melihat list tugas tetapi masih kosong, maka program akan masuk ke dalam kondisi ini
-            print("\nTugas anda masih kosong")
+            print("\n=== Tugas anda masih kosong ===")
         
         else:
-            print("\nList tugas yang anda buat")
-            for index, item in enumerate(tugas,start=1):
-                print(index,".", item)
-        
+            print("\n=== List tugas yang anda buat ===")
+            for index, item in enumerate(tugas):
+                print(f"{index + 1}. {item}")
+            print("=================================")
+
     elif choice == 3: # Jika user memilih untuk menghapus salah satu list tugas
-        if tugas == []: # Jika list tugas masih kosong saat user ingin menghapus salah satu tugasnya, maka program akan masuk ke dalam kondisi ini
-            print("\nTugas anda masih kosong")
-        else:
-            nomor = int(input('Nomor tugas yang ingin: '))
-            tugas.pop(nomor - 1)
-            print('Tugas anda sudah dihapus')
-        
+        if not tugas: # Jika tidak ada tugas yang tersisa, maka program ini akan dijalankan
+            print("\n=== Tugas anda masih kosong ===")
+        elif len(tugas) > 0: # Jika ada tugas yang tersisa, maka program ini akan dijalankan
+            nomor = int(input('Nomor tugas yang ingin dihapus: '))
+            if 1 <= nomor <= len(tugas): # Memastikan nomor tugas yang dimasukkan user sama dengan nomor yang tersedia di dalam list tugas
+                dihapus = tugas.pop(nomor - 1)
+                print(f"\n=== Tugas '{dihapus}' sudah dihapus ===")
+            else: # Jika user memasukkan nomor yang tidak tersedia di dalam list tugas
+                print('\n=== Nomor tugas tidak valid! ===')
+
+
     elif choice == 4: # Jika user memilih untuk langsung keluar program
         break
-    
-print('Selamat tinggal')
+
+print('=== Selamat tinggal ===')
