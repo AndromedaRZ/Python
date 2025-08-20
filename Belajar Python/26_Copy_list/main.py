@@ -4,7 +4,7 @@
 a = ["Ucup", "Otong", "Dudung"]
 print(f'a = {a}')
 
-b = a # pass preference / tidak membuat data baru
+b = a # pass preference / hanya membuat referensi, tidak membuat data baru
 print(f'b = {b}')
 
 # kita akan merubah salah satu nama di dalam list a
