@@ -46,6 +46,7 @@ angka_kuadrat = [i**2 for i in angka] # akan mengkuadratkan atau mempangkatkan n
 print(angka_kuadrat)
 
 # menggunakan enumerate
+# dengan enumerate, kita bisa mengambil index dari list menggunakan for loop
 print("\nEnumerate")
 list_data = ["Ucup", "Otong", "Putri", "Nina", "Febri"]
 
