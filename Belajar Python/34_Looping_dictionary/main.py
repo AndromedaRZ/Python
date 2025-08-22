@@ -36,27 +36,27 @@ for item in teman_teman.items():
 for key, value in teman_teman.items():
     print(f'key = {key}, value = {value}')
     
-data_dict = {
+data_diri = {
     'nama':'Rizky',
     'jabatan':'pegawai',
-    'id':'0023981'
+    'alamat':'Jalan alam sutera',
+    'status':'belum kawin'
 }
 
-for a in data_dict:
-    print(a)
+# print hanya keynya saja
+for item in data_diri:
+    print(item)
     
-key = data_dict.keys()
-print(key)
-
-for key in data_dict.keys():
-    print(data_dict.get(key))
+# print hanya value atau nilainya saja
+for item in data_diri:
+    print(data_diri[item])
     
-nilai = data_dict.values()
-print(nilai)
-
-for nilai in data_dict.values():
-    print(nilai)
-
-items = data_dict.items()
-for item in data_dict.items():
+# print key dan valuenya
+for item in data_diri:
+    print(item,":",data_diri[item])
+    
+for key, item in data_diri.items():
+    print(key,":",item)
+    
+for item in data_diri.items():
     print(item)
