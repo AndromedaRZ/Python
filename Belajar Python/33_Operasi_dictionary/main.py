@@ -32,7 +32,7 @@ print(data_dict)
 data_dict["sep"] = "asep si kasyep"
 print(data_dict)
 
-# mengembalikan data ke semula jika datanya pernah ada
+# mengubah nilai dari data yang sebelumnya ada
 data_dict.update({"cup": "ucup surucup"})
 print(data_dict)
 
