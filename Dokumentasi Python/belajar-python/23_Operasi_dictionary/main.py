@@ -31,6 +31,7 @@ data_dict['cup'] = "ucup si ganteng"
 print(data_dict)
 
 data_dict['sep'] = "asep si kecee" # bisa dianggap menambahkan data
+# dengan cara memasukkan 'key' yang baru menggunakan kurung siku, tambahkan sama dengan dan masukkan values yang kita inginkan untuk key tersebut
 print(data_dict)
 
 data_dict.update({'cup':'ucup surucup'}) # ketika kita menggunakan fungsi .update(), jika data sebelumnya telah ada, maka ia akan merubah atau mengupdate datanya sesuai perubahan terbaru
@@ -39,5 +40,17 @@ data_dict.update({'faqih':'faqihza si keren'}) # tetapi ketika sebelumnya datany
 print(data_dict)
 
 # menghapus data pada dictionary
-del data_dict['faqih'] # kita hanya perlu mengetik del lalu masukkan nama dictionary dan key yang ingin dihapus
+del data_dict['faqih'] # kita hanya perlu mengetik del lalu masukkan nama dictionary dan gunakan kurung siku untuk memasukkan key yang ingin dihapus
 print(data_dict) # maka hasilnya key tersebut akan hilang
+
+# menyatukan dua list menjadi satu dictionary
+keys = ['Russia','USA','China'] 
+# sebelumnya kita buat 2 list terlebih dahulu
+values = ['Moscow','Washington D.C.','Beijing']
+
+print(keys)
+print(values)
+
+data = dict(zip(keys, values)) # gunakan zip() di dalam dict() untuk membungkus kedua list tersebut agar menjadi satu seperti data dictionary yang kita inginkan
+
+print(data)
