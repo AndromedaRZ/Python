@@ -36,8 +36,8 @@ while True:
 
     # fungsi kode di bawah ini adalah akan membuat KEY unik dengan menggunakan random lalu memilih string dengan kode ascii_uppercase, lalu for untuk menentukan dibuat berapa kali
     KEY = ''.join((random.choice(string.ascii_uppercase) for i in range(6)))
-    
-    # menambahkan data 'manahsiswa' ke dictionary 'data_mahasiswa' dengan KEY sebagai kunci
+      
+    # menambahkan data 'mahasiswa' ke dictionary 'data_mahasiswa' dengan KEY sebagai kunci
     data_mahasiswa.update({KEY:mahasiswa})
     
     print(f'\n{'KEY':<7} {'Nama':<10} {'nim':<10} {'jurusan':<13} {'Lahir':<10}')
