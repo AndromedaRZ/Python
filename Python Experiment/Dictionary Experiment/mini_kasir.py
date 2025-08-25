@@ -32,16 +32,16 @@ while True:
     
     elif choice == '1':
 
-        print('┌──────┬────────────────────────────────┐')
-        print(f'│{"KODE":^6}│{"NAMA BARANG":<10}│{"HARGA BARANG":<20}') 
-        print('├──────┼──────────┼──────────────────────┤')
+        print('┌──────┬───────────────┬────────────────┐')
+        print(f'│{"KODE":^6}│ {"NAMA BARANG":<14}│ {"HARGA BARANG":<15}│') 
+        print('├──────┼──────────┼─────────────────────┤')
 
         for kode, produk in data_produk.items():
             KEY = kode
             NAMA = data_produk[KEY]['nama']
             HARGA = data_produk[KEY]['harga']
-            print(f'│{KEY:^6}. {NAMA:<10} - Rp{HARGA:<20}│')
-        print('└───────────────────────────────────────┘') 
+        print(f'│{kode:^6}│ {NAMA:<14}│ {HARGA:<15}│')
+        print('└──────┴───────────────┴────────────────┘') 
 
     elif choice == '5':
         break
