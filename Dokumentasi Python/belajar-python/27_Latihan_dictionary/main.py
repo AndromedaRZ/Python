@@ -23,7 +23,7 @@ while True:
     print("-"*20)
 
     mahasiswa = dict.fromkeys(mahasiswa_template.keys()) # mengambil template keys dari dict mahasiswa_template dan membuat dictionary baru
-    # dengan menggunakan fungsi dict.fromkeyss() dan memasukkannya ke dalam dictionary yang baru bernama mahasiswa
+    # dengan menggunakan fungsi dict.fromkeys() dan memasukkannya ke dalam dictionary yang baru bernama mahasiswa
     print(mahasiswa) # jika masih belum ada isinya, maka outputnya akan menjadi 'none'
 
     mahasiswa['nama'] = input("Nama Mahasiswa: ") # kita tinggal membuat perintah input untuk mengambil data yang diinginkan dari user
