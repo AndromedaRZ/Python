@@ -16,7 +16,7 @@ kontak_template = {
 kontak_dict = {}
 
 while True:
-    kontak = dict.fromkeys(kontak_template.keys()) # membuat dictionary baru bernama 'kontak' setiap kali loop berjalan
+    kontak = dict.fromkeys(kontak_template.keys()) # membuat dictionary baru bernama 'kontak' dengan mengambil key dari 'kontak_template'
 
     print('''
 1) Lihat Semua Kontak
@@ -41,7 +41,7 @@ while True:
             print(f'\n┌────┬──────────────┬───────────────┐')
             print(f'│ {"NO":<2} │ {"NAMA":<13}│ {"NOMOR KONTAK":<14}│')
             print(f'├────┼──────────────┼───────────────┤')
-            for i, KEY in enumerate(kontak_dict): # untuk menampilkan nama dan nomor dari dalam 'kontak_dict' menggunakan for dan index (i) untuk memunculkan numberingnya
+            for i, KEY in enumerate(kontak_dict): # untuk menampilkan nama dan nomor dari dalam 'kontak_dict' menggunakan for dan index (i) untuk memunculkan nomor urut kontaknya
                 NAMA = kontak_dict[KEY]['nama'] 
                 NOMOR = kontak_dict[KEY ]['nomor']
                 print(f'│ {i+1}. │ {NAMA:<13}│ {NOMOR:<14}│')
@@ -53,7 +53,7 @@ while True:
         
         kontak['nomor'] = input("Masukan nomor telepon: ")
         KEY = kontak['nama'] # menggunakan 'nama' kontak sebagai key unik
-        kontak_dict[KEY] = kontak.copy() # membuat dictionary baru bernama 'kontak' dan menyalin setiap key dan valuenya ke dalam dictionary 'kontak_dict' yang awalnya kosong
+        kontak_dict[KEY] = kontak.copy() # menyimpan salinan informasi dictionary 'kontak' ke dalam dictionary 'kontak_dict'
         
         print("\n┌───────────────────────────────────────┐")
         print(f"│ {"Berhasil Menambahkan ke Daftar Kontak"} │")
@@ -93,7 +93,7 @@ while True:
                 
             elif isUbah == "y":
                 nomor_baru = input("Masukan nomor baru: ")
-                kontak_dict[KEY]['nomor'] = nomor_baru # memasukkan value baru bernama variabel 'nomor baru' untuk key 'nomor' yang memiliki KEY unik sesuai nama yang user input
+                kontak_dict[KEY]['nomor'] = nomor_baru # memasukkan value atau nilai baru yang user masukan ke value 'nomor' yang memiliki KEY unik sesuai yang user input
                 
                 print("\n┌───────────────────────────────────────┐")
                 print(f'│{'Nomor kontak berhasil diubah':^39}│')
@@ -111,14 +111,14 @@ while True:
             
             if dihapus not in kontak_dict:
                 print("\n┌───────────────────────────────────────┐")
-                print("│    Kontak yang anda cari tidak ada    │")
+                print(f"│{'Kontak tersebut tidak ada':^39}│")
                 print("└───────────────────────────────────────┘")
             
             else:
                 del kontak_dict[dihapus]
                 print("\n┌───────────────────────────────────────┐")
                 print(f"│{'Kontak berhasil dihapus':^39}│")
-            print("└───────────────────────────────────────┘")
+                print("└───────────────────────────────────────┘")
                 
                 
         
