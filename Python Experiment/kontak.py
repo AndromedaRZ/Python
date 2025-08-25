@@ -11,8 +11,6 @@ kontak_template = {
 
 kontak_dict = {}
 
-# di sini title
-
 while True:
     kontak = dict.fromkeys(kontak_template.keys())
     
@@ -89,6 +87,10 @@ while True:
                 print(f"│ {i+1}. │ {NAMA:<12} │ {NOMOR:<13} │")
             print('└────┴──────────────┴───────────────┘')
             hapus_kontak = input("Masukkan nama kontak yang ingin dihapus: ").capitalize()
+            if hapus_kontak not in kontak_dict:
+                print("\n──────────────────────")
+                print("Kontak tidak ditemukan")
+                print("──────────────────────")
             del kontak_dict[hapus_kontak]
             print(f"Kontak '{hapus_kontak}' berhasil dihapus!")
             
