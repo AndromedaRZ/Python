@@ -60,7 +60,7 @@ while True:
     elif choice == '2':
         check_kode = input("Masukan kode barang yang ingin dibeli: ")
         if check_kode in data_produk:
-            print("\nBarang ditemukan")
+            print("\nBarang ditemukan!")
             print('╌'*20)
             NAMA = data_produk[check_kode]['nama']
             HARGA = data_produk[check_kode]['harga']
@@ -81,7 +81,7 @@ while True:
             
             keranjang.append(item) # memasukan data barang belanjaan dari dictionary 'item' ke list kosong bernama 'keranjang
             
-            print(f'{data_produk[check_kode]['nama']} berhasil ditambahkan ke keranjang.')
+            print(f'{jumlah} {data_produk[check_kode]['nama']} berhasil ditambahkan ke keranjang.')
             
         else:
             print("Barang dengan kode tersebut tidak ada")
@@ -92,9 +92,12 @@ while True:
             print("Keranjang belanja anda masih kosong!")
             
         else:    
+            print('╌'*42)
+            print(f'{'NAMA':<14} {'HARGA':<8} {'JUMLAH':<3} {'TOTAL':<10}')
+            print('╌'*42)
             for item in keranjang:
-                print(f"{item['nama']:<17} {item['harga']:<10,} {item['jumlah']:<3} {item['total']:<10,}") 
-                
+                print(f"{item['nama']:<14} Rp {item['harga']:<6,} {item['jumlah']:<5} Rp {item['total']:<11,}") 
+            print('╌'*42)
         
         
     
@@ -128,7 +131,7 @@ while True:
                     print(f'│ {item["nama"]:<15} Rp {item["harga"]:<6,} {item["jumlah"]:^8}  Rp {item["total"]:<8,}│')
                     total_belanja += item["total"]
                 print('├────────────────────────────────────────────────┤')
-                print(f'│ {"TOTAL BELANJA":<34}  Rp {total_belanja:<8,}│')
+                print(f'│ {"TOTAL BELANJA:":<34}  Rp {total_belanja:<8,}│')
                 print('└────────────────────────────────────────────────┘')
                 
                 print('\nKeranjang anda telah dikosongkan kembali')
@@ -145,3 +148,5 @@ while True:
 
     else:
         print("Masukan pilihan yang benar!")
+        
+print('Selamat tinggal!')
