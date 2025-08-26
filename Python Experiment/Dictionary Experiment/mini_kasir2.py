@@ -85,8 +85,8 @@ print("│            Daftar belanjaan            │")
 print("├────────────────────────────────────────┤")
 print(f"│ {'Nama':<12} {'Harga':<7} {'Jumlah':<6} {'Subtotal':<10} │")
 for item in keranjang:
-    print(f"│ {item['nama']:<12} {item['harga']:<7} {item['jumlah']:^6} {item['subtotal']:<10} │")
+    print(f"│ {item['nama']:<12} {item['harga']:<7,} {item['jumlah']:^6} {item['subtotal']:<10,} │")
     
 print("├────────────────────────────────────────┤")
-print(f"│ {'Total belanja':<26}: {total:<10} │")
+print(f"│ {'Total belanja':<26}: {total:<10,} │")
 print("└────────────────────────────────────────┘")
