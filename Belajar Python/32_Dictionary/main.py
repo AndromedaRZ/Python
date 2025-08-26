@@ -10,7 +10,7 @@ print(data_list[0])
 format dictionary adalah
 'key':'nilai atau isinya'
 '''
-
+# value dari dictionary bisa berisi bermacam-macam tipe data seperti string, integer, bahkan list 
 data_dict = {
     'key':'value',
     'cp':'Ucup',
@@ -26,3 +26,4 @@ print(data_dict)
 print(data_dict['cp'])
 print(data_dict['nmbr'])
 print(data_dict['list'])
+

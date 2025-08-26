@@ -43,8 +43,7 @@ print(f'{'KEY':<3} {'Nama':<20} {'SKS':<3} {'Beasiswa':<9} {'Lahir':<10}')
 
 print("-"*50)
 
-for mahasiswa in data_mahasiswa:
-    KEY = mahasiswa
+for KEY in data_mahasiswa:
     
     # ambil data detail dari dictionary berdasarkan key
     NAMA = data_mahasiswa[KEY]['nama']

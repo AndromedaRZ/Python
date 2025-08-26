@@ -6,6 +6,7 @@ teman_teman = {
     "ric":"ricky",
 }
 
+# akan menduplikat dictionary 'teman_teman' ke dictionary baru bernama 'friends'
 friends = teman_teman.copy()
 
 print("teman_teman =",teman_teman)

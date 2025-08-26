@@ -52,3 +52,15 @@ list_data = ["Ucup", "Otong", "Putri", "Nina", "Febri"]
 
 for index, data in enumerate(list_data): # pada setiap pengulangan, for akan mengambil indexnya dan data dari list 'list_data' tersebut
     print(f'index ke-{index} = {data}')
+    
+    
+# jika di dalam list terdapat list lagi
+
+data_siswa = [{
+    'nama':'rizky',
+    'jurusan':'informatika',
+    'hobi':'program game'
+}]
+
+for i in data_siswa:
+    print(f'nama = {i['nama']}, jurusan = {i['jurusan']}, hobi = {i['hobi']}')
