@@ -59,7 +59,7 @@ while True:
         print(f"│ {"Berhasil Menambahkan ke Daftar Kontak"} │")
         print("└───────────────────────────────────────┘")
         
-    
+     
     elif choice == '3': # jika user memilih ingin mengubah salah satu kontak di dalam daftar kontak
         
         if len(kontak_dict) == 0: # jika daftar kontak kosong, maka akan muncul tampilan yang diprint di bawah ini
