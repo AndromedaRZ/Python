@@ -1,6 +1,7 @@
 # Program sistem perpustakaan mini
 
-import os, random, string, time, json
+from datetime import date
+import os, random, string, time, json, datetime
 
 os.system("clear")
 
@@ -10,6 +11,10 @@ data_peminjaman = {}
 with open("data_perpustakaan_rizky.json", "r") as file:
     data = json.load(file)
     rak_buku.update(data)
+
+with open("data_peminjaman_rizky.json", "r") as file:
+    data = json.load(file)
+    data_peminjaman.update(data)
 
 title = "│ SELAMAT DATANG DI PERPUSTAKAAN RIZKY │"
 
@@ -42,7 +47,7 @@ while True:
             print("│ Rak buku anda masih kosong! │")
             print("└─────────────────────────────┘")
         else: # jika rak buku ada isinya, maka program di bawah ini akan berjalan dan menampilkan semua buku yang tersedia di rak perpustakaan
-            title = f"│ {'NO':<3} {'KODE':<6} {'JUDUL BUKU':<15} {'NAMA PENULIS':<15} {'STOK TOTAL':<12} {'STOK TERSEDIA':<12} │"
+            title = f"│ {'NO':<3} {'KODE':<6} {'JUDUL BUKU':<25} {'NAMA PENULIS':<20} {'STOK TOTAL':<12} {'STOK TERSEDIA':<12} │"
             print(f"\n┌{'─'*(len(title) - 2)}┐")
             print(title)
             print(f"├{'─'*(len(title) - 2)}┤")
@@ -51,7 +56,7 @@ while True:
                 NAMA = rak_buku[KEY]['penulis']
                 TOTAL = rak_buku[KEY]['total']
                 STOK = rak_buku[KEY]['stok']
-                print(f"│ {i+1:<3} {KEY:<6} {JUDUL:<15} {NAMA:<19} {TOTAL:<12} {STOK:<9} │")
+                print(f"│ {i+1:<3} {KEY:<6} {JUDUL:<25} {NAMA:<24} {TOTAL:<12} {STOK:<9} │")
             print(f"└{'─'*(len(title) - 2)}┘")
             
 # =======================================================================
@@ -69,7 +74,7 @@ while True:
                 if keyword in value['judul'] or keyword in value['penulis']: # memeriksa setiap keyword atau kata kunci yang cocok di dalam rak buku
                     hasil_cari.append(key) # menyimpan semua kode buku (semua data bukunya seperti nama, penulis, dan stoknya) ke dalam list sementara bernama 'hasil_cari'
             if hasil_cari: # jika sudah ada buku yang cocok dengan keyword atau kata kunci user, maka kode di bawah ini akan menampilkan seluruh buku yang sesuai
-                title = f"│ {'NO':<3} {'KODE':<6} {'JUDUL BUKU':<15} {'NAMA PENULIS':<15} {'STOK TOTAL':<12} {'STOK TERSEDIA':<12} │"
+                title = f"│ {'NO':<3} {'KODE':<6} {'JUDUL BUKU':<25} {'NAMA PENULIS':<20} {'STOK TOTAL':<12} {'STOK TERSEDIA':<12} │"
                 print(f"\n┌{'─' * (len(title) - 2)}┐")
                 print(title)
                 print(f"├{'─' * (len(title) - 2)}┤")
@@ -78,7 +83,7 @@ while True:
                     NAMA = rak_buku[KEY]['penulis']
                     TOTAL = rak_buku[KEY]['total']
                     STOK = rak_buku[KEY]['stok']
-                    print(f"│ {i+1:<3} {KEY:<6} {JUDUL:<15} {NAMA:<19} {TOTAL:<12} {STOK:<9} │")
+                    print(f"│ {i+1:<3} {KEY:<6} {JUDUL:<25} {NAMA:<24} {TOTAL:<12} {STOK:<9} │")
                 print(f"└{'─' * (len(title) - 2)}┘")
             else: # jika tidak ada buku yang cocok dengan keyword atau kata kunci yang dimasukan user
                 print("\n┌───────────────────────┐")
@@ -130,34 +135,34 @@ while True:
             print("│ Rak buku anda masih kosong! │")
             print("└─────────────────────────────┘")
         else: # jika rak buku ada isinya, maka program di bawah ini akan berjalan
-            ubah_buku = input("Masukan kode buku yang ingin anda ubah: ")
+            ubah_buku = input("Masukan kode buku yang ingin anda ubah: ").capitalize()
             if ubah_buku not in rak_buku: # jika kode yang dimasukan user tidak ada di rak buku
                 print("\n┌───────────────────────┐")
                 print("│ Buku tidak ditemukan! │")
                 print("└───────────────────────┘")
             else: # jika kode yang dimasukan user sama dengan yang ada di rak buku
                 while True:
-                    title = f"│ {'KODE':<6} {'JUDUL BUKU':<15} {'NAMA PENULIS':<15} {'STOK TOTAL':<12} {'STOK TERSEDIA':<12} │"
+                    title = f"│ {'KODE':<6} {'JUDUL BUKU':<25} {'NAMA PENULIS':<20} {'STOK TOTAL':<12} {'STOK TERSEDIA':<12} │"
                     print(f"\n┌{'─' * (len(title) - 2)}┐")
                     print(title)
                     print(f"├{'─' * (len(title) - 2)}┤")
                     
-                    # JUDUL = rak_buku[KEY]['judul']
-                    # NAMA = rak_buku[KEY]['penulis']
-                    # TOTAL = rak_buku[KEY]['total']
-                    # STOK = rak_buku[KEY]['stok']
-                    print(f"│ {KEY:<6} {JUDUL:<15} {NAMA:<19} {TOTAL:<12} {STOK:<9} │")
+                    JUDUL = rak_buku[ubah_buku]['judul']
+                    NAMA = rak_buku[ubah_buku]['penulis']
+                    TOTAL = rak_buku[ubah_buku]['total']
+                    STOK = rak_buku[ubah_buku]['stok']
+                    print(f"│ {ubah_buku:<6} {JUDUL:<25} {NAMA:<24} {TOTAL:<12} {STOK:<9} │")
                     print(f"└{'─' * (len(title) - 2)}┘")
                 
                     print('''\n1) Judul Buku
 2) Nama Penulis
 3) Stok Total
 4) Keluar''')
-                    choice2 = input("Apa yang ingin anda ubah?: ")
+                    choice2 = input("Apa yang ingin anda ubah? [1/2/3/4]: ")
 
                     if choice2 == '1':
                         judul_baru = input("Masukan judul baru: ").title()
-                        rak_buku[KEY]['judul'] = judul_baru
+                        rak_buku[ubah_buku]['judul'] = judul_baru
                         
                         title = "│ Judul buku berhasil diubah │"
                         print(f"\n┌{'─'*(len(title) - 2)}┐")
@@ -166,7 +171,7 @@ while True:
                              
                     elif choice2 == '2': 
                         nama_baru = input("Masukan nama penulis baru: ").title()
-                        rak_buku[KEY]['penulis'] = nama_baru
+                        rak_buku[ubah_buku]['penulis'] = nama_baru
                         
                         title = "│ Nama penulis berhasil diubah │"
                         print(f"\n┌{'─'*(len(title) - 2)}┐")
@@ -174,17 +179,27 @@ while True:
                         print(f"└{'─'*(len(title) - 2)}┘")
                 
                     elif choice2 == '3':
-                        stok_terbaru = int(input("Masukan stok terbaru: "))
-                        rak_buku[KEY]['total'] = stok_terbaru
+                        if rak_buku[ubah_buku]['total'] > rak_buku[ubah_buku]['stok']:  # jika stok total lebih sedikit dari stok yang tersedia, maka stok total tidak bisa diubah
+                            title = "│ Stok buku tidak dapat diperbarui │"
+                            print(f"\n┌{'─'*(len(title) - 2)}┐")
+                            print(title)
+                            print(f"└{'─'*(len(title) - 2)}┘")
                         
-                        # jika stok total lebih sedikit dari stok yang tersedia, maka stok total tidak bisa diubah 
-                        
-                        title = "│ Stok buku berhasil diperbarui │"
-                        print(f"\n┌{'─'*(len(title) - 2)}┐")
-                        print(title)
-                        print(f"└{'─'*(len(title) - 2)}┘")
+                        else:
+                            stok_terbaru = int(input("Masukan stok terbaru: "))
+                            stok = rak_buku[ubah_buku]['total']
+                            rak_buku[ubah_buku]['total'] = stok_terbaru
+                            rak_buku[ubah_buku]['stok'] = rak_buku[ubah_buku]['total'] # jika jumlah stok total berubah, maka stok tersedia juga akan mengikuti jumlah stok total
+                            
+                            title = "│ Stok buku berhasil diperbarui │"
+                            print(f"\n┌{'─'*(len(title) - 2)}┐")
+                            print(title)
+                            print(f"└{'─'*(len(title) - 2)}┘")
                 
                     elif choice2 == '4':
+                        print("\n┌───────────────────────┐")
+                        print("│ Kembali ke menu utama │")
+                        print("└───────────────────────┘")
                         break
 
 # =======================================================================
@@ -196,31 +211,63 @@ while True:
             print("└─────────────────────────────┘")
         
         else:
-            hapus_buku = input("Masukan kode buku yang ingin dihapus: ")
+            hapus_buku = input("Masukan kode buku yang ingin dihapus: ").capitalize()
             if hapus_buku not in rak_buku: # jika kode yang dimasukan user tidak ada di rak buku
                     print("\n┌───────────────────────┐")
                     print("│ Buku tidak ditemukan! │")
                     print("└───────────────────────┘")
+            
+            elif rak_buku[hapus_buku]['total'] > rak_buku[hapus_buku]['stok']:
+                        title = f"│ Buku tersebut sedang dipinjam! │"
+                        print(f"\n┌{'─'*(len(title) - 2)}┐")
+                        print(title)
+                        print(f"└{'─'*(len(title) - 2)}┘")
+                        
             else:
                 konfirmasi = input(f"Apakah anda yakin ingin menghapus buku '{rak_buku[hapus_buku]['judul']}'? [y/n]: ")
                 if konfirmasi == 'n':
                     print("\n┌───────────────────────┐")
                     print("│ Kembali ke menu utama │")
                     print("└───────────────────────┘")
-                elif konfirmasi == 'y':
-                    
+                elif konfirmasi == 'y':    
                     title = f"│ Data buku '{rak_buku[hapus_buku]['judul']}' berhasil dihapus │"
                     print(f"\n┌{'─'*(len(title) - 2)}┐")
                     print(title)
                     print(f"└{'─'*(len(title) - 2)}┘")
-                    
                     del rak_buku[hapus_buku]
                     
 # =======================================================================
 # Jika user memilih untuk melihat data buku yang dipinjam dari perpustakaan
     elif choice == "6":
-        continue
-    
+        if data_peminjaman == {}:
+            title = f"│ Belum ada buku yang dipinjam! │"
+            print(f"\n┌{'─'*(len(title) - 2)}┐")
+            print(title)
+            print(f"└{'─'*(len(title) - 2)}┘")
+        else:
+            title = f"│ {'NO':<3} {'KODE':<5} {'NAMA PEMINJAM':<15} {'JUDUL DAN PENULIS':<45} {'DIPINJAM':^11} {'KEMBALI':^11} {'STATUS':^13} │"
+            print(f"\n┌{'─'*(len(title) - 2)}┐")
+            print(title)
+            print(f"├{'─' * (len(title) - 2)}┤")
+            print(data_peminjaman)
+            
+            for i, key in enumerate(data_peminjaman):
+                print(i, key)
+            
+            # for i, key in enumerate(data_peminjaman):
+            #     nama = data_peminjaman[key]['nama']
+            #     judul = data_peminjaman[key]['judul']
+            #     penulis = data_peminjaman[key]['penulis']
+            #     judul_penulis = [judul, penulis]
+            #     judul_penulis = f"{judul_penulis[0]} oleh {judul_penulis[1]}"
+                
+            #     waktu = data_peminjaman[key]['waktu']
+            #     kembali = data_peminjaman[key]['kembali']
+            #     status = data_peminjaman[key]['status']
+                
+            #     print(f"│ {i+1:<3} {key:<5} {nama:<15} {judul_penulis:<45} {waktu:^11} {kembali:^11} {status:^13} │")
+            # print(f"└{'─' * (len(title) - 2)}┘")   
+            
 # =======================================================================
 # Jika user memilih untuk meminjam buku dari perpustakaan
     elif choice == "7":
@@ -229,34 +276,100 @@ while True:
             print("│ Rak buku anda masih kosong! │")
             print("└─────────────────────────────┘")
         else:
-            dipinjam = input("Masukan kode buku yang ingin dipinjam: ")
+            dipinjam = input("Masukan kode buku yang ingin dipinjam: ").capitalize()
             if dipinjam not in rak_buku: # jika kode yang dimasukan user tidak ada di rak buku
                     print("\n┌───────────────────────┐")
                     print("│ Buku tidak ditemukan! │")
                     print("└───────────────────────┘")
+                    
+            elif rak_buku[dipinjam]['stok'] < 1:
+                title = f"│ Stok buku '{rak_buku[dipinjam]['judul']}' sedang tidak tersedia! │"
+                print(f"\n┌{"─"*(len(title) - 2)}┐")
+                print(title)
+                print(f"└{"─"*(len(title) - 2)}┘")
+            
             else:
-                konfirmasi = input(f"Ingin meminjam buku '{rak_buku[dipinjam]['judul']}'? [y/n]:")
+                konfirmasi = input(f"Ingin meminjam buku '{rak_buku[dipinjam]['judul']}'? [y/n]: ")
                 if konfirmasi == 'n':
                     print("\n┌───────────────────────┐")
                     print("│ Kembali ke menu utama │")
                     print("└───────────────────────┘")
                 elif konfirmasi == 'y':
-                    peminjaman_sementara = {} # dictionary untuk menyimpan data sementara sebelum dimasukan ke dictionary utama untuk peminjaman
-                    peminjaman_sementara['judul'] = rak_buku[dipinjam]['judul'] # menyalin judul buku yang dipinjam user ke dictionary sementara
-                    peminjaman_sementara['nama'] = rak_buku[dipinjam]['nama'] # menyalin nama penulis buku yang dipinjam user ke dictionary sementara
-                    rak_buku[dipinjam]['stok'] -= 1
-                    data_peminjaman = rak_buku[dipinjam].copy() # menyalin data peminjaman buku sementara ke data peminjaman buku utama
+                    peminjaman_sementara = {} # dictionary untuk menyimpan data sementara sebelum dimasukan ke dictionary utama sebagai data peminjaman
+                    
+                    waktu_saat_ini = datetime.datetime.now() # mengambil waktu saat ini untuk digunakan sebagai tanggal peminjaman
+                    
+                    nama_peminjam = input("Masukan nama peminjam: ").title()
+                    
+                    if dipinjam in data_peminjaman and nama_peminjam in data_peminjaman[dipinjam]['nama'] and data_peminjaman[dipinjam]['status'] == 'dipinjam':
+                        title = f"│ Buku tersebut masih anda pinjam! │"
+                        print(f"\n┌{"─"*(len(title) - 2)}┐")
+                        print(title)
+                        print(f"└{"─"*(len(title) - 2)}┘")
+                    else:
+                        
+                        KEY = 'B' + ''.join(random.choices(string.digits, k = 3)) # mengenerate kode random yang dimulai dari huruf "B" dengan total kode sebanyak 4 digit dan menjadikannya key unik
+                        
+                        peminjaman_sementara[dipinjam] = {
+                            "nama": nama_peminjam, 
+                            "judul": rak_buku[dipinjam]['judul'],
+                            "penulis": rak_buku[dipinjam]['penulis'],
+                            "waktu": waktu_saat_ini.strftime('%d/%m/%Y'),
+                            "kembali": '-',
+                            "status": 'dipinjam'
+                        } # dicionary peminjaman sementara ini akan mengambil semua data seperti judul buku dan nama penulis buku yang dipinjam user dari rak buku
+                        
+                        
+                        
+                        rak_buku[dipinjam]['stok'] -= 1 # mengurangi stok buku yang tersedia dari rak buku karena bukunya sedang dipinjam
+                        
+                        data_peminjaman[KEY] = peminjaman_sementara.copy() # menyalin data peminjaman buku sementara ke data peminjaman buku utama
+                        
+                        title = f"│ Buku '{rak_buku[dipinjam]['judul']}' berhasil dipinjam │"
+                        print(f"\n┌{"─"*(len(title) - 2)}┐")
+                        print(title)
+                        print(f"└{"─"*(len(title) - 2)}┘")
 
 # =======================================================================
 # Jika user memilih untuk mengembalikan buku yang dipinjam dari perpustakaan
     elif choice == "8":
-        continue
-    
+        dikembalikan = input("Masukan kode buku yang ingin anda kembalikan: ").capitalize()
+
+        if dikembalikan in data_peminjaman and data_peminjaman[dikembalikan]['status'] == 'dipinjam': # memeriksa apakah kode buku yang dimasukan oleh peminjam buku sama dengan yang ada di daftar peminjaman dan status buku tersebut juga sedang dipinjam
+            nama_peminjam = input("Masukan nama peminjam: ").title()
+            
+            if nama_peminjam in data_peminjaman[dikembalikan]['nama'] and data_peminjaman[dikembalikan]['status'] == 'dipinjam': # memeriksa apakah nama peminjam yang dimasukan oleh pemnjam ada di dalam daftar peminjaman dan status buku tersebut juga sedang dipinjam 
+                data_peminjaman[dikembalikan]['status'] = 'dikembalikan'
+                rak_buku[dikembalikan]['stok'] += 1
+                
+                data_peminjaman[dikembalikan]['kembali'] = date.today().strftime('%d/%m/%Y')
+                
+                title = f"│ Buku '{data_peminjaman[dikembalikan]['judul']}' berhasil dikembalikan │"
+                print(f"\n┌{"─"*(len(title) - 2)}┐")
+                print(title)
+                print(f"└{"─"*(len(title) - 2)}┘")
+                
+            else:
+                title = f"│ Nama tersebut bukan peminjam bukunya! │"
+                print(f"\n┌{"─"*(len(title) - 2)}┐")
+                print(title)
+                print(f"└{"─"*(len(title) - 2)}┘")
+                
+        else:
+            title = f"│ Buku tersebut bukan yang dipinjam! │"
+            print(f"\n┌{"─"*(len(title) - 2)}┐")
+            print(title)
+            print(f"└{"─"*(len(title) - 2)}┘")
+
 # =======================================================================
 # Jika user memilih untuk keluar dari sistem perpustakaan
     elif choice == "9":
         with open("data_perpustakaan_rizky.json", "w") as file:
             json.dump(rak_buku, file, indent=4)
+            
+        with open("data_peminjaman_rizky.json", "w") as file:
+            json.dump(data_peminjaman, file, indent=4)
+            
         exit()
 
             

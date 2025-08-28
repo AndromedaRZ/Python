@@ -2,13 +2,61 @@
     "B375": {
         "judul": "Hujan",
         "penulis": "Tere Liye",
-        "total": 70,
-        "stok": 70
+        "total": 10,
+        "stok": 10
     },
     "B958": {
         "judul": "Hutan",
         "penulis": "Tere Liye",
-        "total": 80,
-        "stok": 80
+        "total": 9,
+        "stok": 9
+    },
+    "B672": {
+        "judul": "Date A Live V1",
+        "penulis": "Koushi Tachibana",
+        "total": 5,
+        "stok": 5
+    },
+    "B739": {
+        "judul": "Manusia Setengah Salmon",
+        "penulis": "Raditya Dika",
+        "total": 3,
+        "stok": 3
+    },
+    "B957": {
+        "judul": "Kancil Dan Buaya",
+        "penulis": "Fabel Nusantara",
+        "total": 12,
+        "stok": 12
+    },
+    "B437": {
+        "judul": "Negeri 5 Menara",
+        "penulis": "Ahmad Fuadi",
+        "total": 5,
+        "stok": 5
+    },
+    "B565": {
+        "judul": "Laskar Pelangi",
+        "penulis": "Andrea Hirata",
+        "total": 6,
+        "stok": 6
+    },
+    "B873": {
+        "judul": "Filosofi Kopi",
+        "penulis": "Dee Lestari",
+        "total": 3,
+        "stok": 3
+    },
+    "B368": {
+        "judul": "Dilan 1990",
+        "penulis": "Pidi Baiq",
+        "total": 8,
+        "stok": 8
+    },
+    "B422": {
+        "judul": "Kamu Gak Sendiri",
+        "penulis": "Syahid Muhammad",
+        "total": 2,
+        "stok": 1
     }
 }
