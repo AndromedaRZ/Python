@@ -180,7 +180,7 @@ while True:
                 
                     elif choice2 == '3':
                         if rak_buku[ubah_buku]['total'] > rak_buku[ubah_buku]['stok']:  # jika stok total lebih sedikit dari stok yang tersedia, maka stok total tidak bisa diubah
-                            title = "│ Stok buku tidak dapat diperbarui │"
+                            title = "│ Stok buku tidak dapat diperbarui! │"
                             print(f"\n┌{'─'*(len(title) - 2)}┐")
                             print(title)
                             print(f"└{'─'*(len(title) - 2)}┘")
@@ -249,24 +249,20 @@ while True:
             print(f"\n┌{'─'*(len(title) - 2)}┐")
             print(title)
             print(f"├{'─' * (len(title) - 2)}┤")
-            print(data_peminjaman)
             
-            for i, key in enumerate(data_peminjaman):
-                print(i, key)
-            
-            # for i, key in enumerate(data_peminjaman):
-            #     nama = data_peminjaman[key]['nama']
-            #     judul = data_peminjaman[key]['judul']
-            #     penulis = data_peminjaman[key]['penulis']
-            #     judul_penulis = [judul, penulis]
-            #     judul_penulis = f"{judul_penulis[0]} oleh {judul_penulis[1]}"
+            for i, KEY in enumerate(data_peminjaman):
+                nama = data_peminjaman[KEY]['nama']
+                judul = data_peminjaman[KEY]['judul']
+                penulis = data_peminjaman[KEY]['penulis']
+                judul_penulis = [judul, penulis]
+                judul_penulis = f"{judul_penulis[0]} oleh {judul_penulis[1]}"
                 
-            #     waktu = data_peminjaman[key]['waktu']
-            #     kembali = data_peminjaman[key]['kembali']
-            #     status = data_peminjaman[key]['status']
+                waktu = data_peminjaman[KEY]['waktu']
+                kembali = data_peminjaman[KEY]['kembali']
+                status = data_peminjaman[KEY]['status']
                 
-            #     print(f"│ {i+1:<3} {key:<5} {nama:<15} {judul_penulis:<45} {waktu:^11} {kembali:^11} {status:^13} │")
-            # print(f"└{'─' * (len(title) - 2)}┘")   
+                print(f"│ {i+1:<3} {KEY:<5} {nama:<15} {judul_penulis:<45} {waktu:^11} {kembali:^11} {status:^13} │")
+            print(f"└{'─' * (len(title) - 2)}┘")   
             
 # =======================================================================
 # Jika user memilih untuk meminjam buku dari perpustakaan
@@ -310,7 +306,8 @@ while True:
                         
                         KEY = 'B' + ''.join(random.choices(string.digits, k = 3)) # mengenerate kode random yang dimulai dari huruf "B" dengan total kode sebanyak 4 digit dan menjadikannya key unik
                         
-                        peminjaman_sementara[dipinjam] = {
+                        peminjaman_sementara = {
+                            "kode": dipinjam,
                             "nama": nama_peminjam, 
                             "judul": rak_buku[dipinjam]['judul'],
                             "penulis": rak_buku[dipinjam]['penulis'],
@@ -323,7 +320,7 @@ while True:
                         
                         rak_buku[dipinjam]['stok'] -= 1 # mengurangi stok buku yang tersedia dari rak buku karena bukunya sedang dipinjam
                         
-                        data_peminjaman[KEY] = peminjaman_sementara.copy() # menyalin data peminjaman buku sementara ke data peminjaman buku utama
+                        data_peminjaman[KEY] = peminjaman_sementara.copy() # menyalin data peminjaman buku sementara ke data peminjaman buku utama yang sudah ada key uniknya
                         
                         title = f"│ Buku '{rak_buku[dipinjam]['judul']}' berhasil dipinjam │"
                         print(f"\n┌{"─"*(len(title) - 2)}┐")
@@ -340,7 +337,9 @@ while True:
             
             if nama_peminjam in data_peminjaman[dikembalikan]['nama'] and data_peminjaman[dikembalikan]['status'] == 'dipinjam': # memeriksa apakah nama peminjam yang dimasukan oleh pemnjam ada di dalam daftar peminjaman dan status buku tersebut juga sedang dipinjam 
                 data_peminjaman[dikembalikan]['status'] = 'dikembalikan'
-                rak_buku[dikembalikan]['stok'] += 1
+                
+                KEY = data_peminjaman[dikembalikan]['kode']
+                rak_buku[KEY]['stok'] += 1
                 
                 data_peminjaman[dikembalikan]['kembali'] = date.today().strftime('%d/%m/%Y')
                 

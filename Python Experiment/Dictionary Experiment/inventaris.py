@@ -3,6 +3,12 @@ import string
 import json
 
 inventaris = {}
+
+# Saat program dijalankan, baca file JSON
+with open("inventaris.json", "r") as f:
+    data = json.load(f)
+    inventaris.update(data)   # pindahkan data JSON ke dictionary kosong
+
 print("\nSelamat datang di program manajemen inventaris toko")
 
 while True:
@@ -79,7 +85,7 @@ while True:
                 title = f"{'Kode':<5} {'Nama barang':<15} {'Jumlah stok':<12} {'Harga':<8}"
                 
                 print()
-                print("\nBarang ditemukan!")
+                print("Barang ditemukan!")
                 print("-"*len(title))
                 print(title)
                 print("-"*len(title))
@@ -195,12 +201,10 @@ while True:
                 print(f"Barang '{sudah_dihapus}' berhasil dihapus!")
                 
     elif choice == '6':
+        with open('inventaris.json', 'w') as file: # untuk menyimpan perubahan yang terjadi di dalam dictionary inventaris ke dalam file eksternal bernama inventaris.json
+            json.dump(inventaris, file, indent=4) # indent=4 untuk format yang rapi
         print("Anda telah keluar")
         break
     
     else:
         continue
-    
-    # Simpan data inventaris ke file eksternal setiap kali ada perubahan
-    with open("inventaris_data.json", "w", encoding="utf-8") as f:
-        json.dump(inventaris, f, indent=4)

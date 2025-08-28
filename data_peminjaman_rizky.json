@@ -1,12 +1,29 @@
 {
-    "B953": {
-        "B422": {
-            "nama": "Rizky",
-            "judul": "Kamu Gak Sendiri",
-            "penulis": "Syahid Muhammad",
-            "waktu": "28/08/2025",
-            "kembali": "-",
-            "status": "dipinjam"
-        }
+    "B730": {
+        "kode": "B422",
+        "nama": "Rizky",
+        "judul": "Kamu Gak Sendiri",
+        "penulis": "Syahid Muhammad",
+        "waktu": "28/08/2025",
+        "kembali": "-",
+        "status": "dipinjam"
+    },
+    "B878": {
+        "kode": "B422",
+        "nama": "Ricky",
+        "judul": "Kamu Gak Sendiri",
+        "penulis": "Syahid Muhammad",
+        "waktu": "28/08/2025",
+        "kembali": "28/08/2025",
+        "status": "dikembalikan"
+    },
+    "B403": {
+        "kode": "B422",
+        "nama": "Ricky",
+        "judul": "Kamu Gak Sendiri",
+        "penulis": "Syahid Muhammad",
+        "waktu": "28/08/2025",
+        "kembali": "-",
+        "status": "dipinjam"
     }
 }

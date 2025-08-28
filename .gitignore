@@ -2,6 +2,6 @@
 __pycache__/
 .ipynb_checkpoints
 
-# ignore file spesifik
-
+# ignore ekstensi spesifik
+*.json
 
