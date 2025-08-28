@@ -131,4 +131,19 @@ for item in buah.items():
 # menempatkan secara spesifik key dan value di dalam loopnya
 for key, value in buah.items():
     print(f'key: {key}, dan value: {value}')
+
+# contoh advanced
+
+data_siswa = {
+    'rizky':{'jurusan':'informatika', 'hobi':'membuat program'},
+    'ricky':{'jurusan':'sistem informasi', 'hobi':'menganggu rizky'}
+}
+
+# jika kita ingin mengambil sebagian informasi seperti hanya mengambil nilai jurusan atau hobi dari dictionary 'data_siswa' di atas
+for key, value in data_siswa.items():
+    print(f'key: {key}, jurusan: {value['jurusan']}, hobi: {value['hobi']}')
     
+# atau metode for berikut
+
+for siswa in data_siswa:
+    print(f'key: {siswa}, jurusan: {data_siswa[siswa]['jurusan']}, hobi: {data_siswa[siswa]['hobi']}')
