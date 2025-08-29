@@ -30,18 +30,25 @@ while True:
     
 # ===========================================================================================================================================
 # Jika user ingin login ke sistem bank    
-    if choice == '1':
-        nama_verifikasi = input("Masukan nama akun anda: ")
-        pin_verifikasi = input("Masukan pin akun anda: ")
-        rekening_verifikasi = input("Masukan no rekening anda: ")
-        if rekening_verifikasi in akun_bank and nama_verifikasi == akun_bank[rekening_verifikasi]['nama'] and pin_verifikasi == akun_bank[rekening_verifikasi]['pin']:
-            print("found it")
-        else:
-            title = "│ Akun rekening tidak ditemukan! │"
+    if choice == '1':  
+        if akun_bank == {}: # Jika belum ada akun yang terdaftar, maka user akan diperingatkan kalimat di bawah ini
+            title = "│ Belum ada akun yang terdaftar! │"
             print(f"\n┌{'─'*(len(title) - 2)}┐")
             print(title)
-            print(f"└{'─'*(len(title) - 2)}┘\n")
-        
+            print(f"└{'─'*(len(title) - 2)}┘")
+        else:
+            nama_verifikasi = input("Masukan nama akun anda: ")
+            pin_verifikasi = int(input("Masukan pin akun anda: "))
+            verifikasi = []
+            
+            for key, value in akun_bank.items(): # akan memeriksa dictionary akun_bank menggunakan for loop untuk mengecek apakah ada nama dan pin yang cocok dengan yang dimasukan user
+                if nama_verifikasi in value['nama'] and pin_verifikasi == value['pin']:
+                    verifikasi.append(key)
+            if verifikasi:
+                print(akun_bank)
+                print("akun ditemukan!")       
+            else:
+                print("akun tidak ditemukan")
     
 # ===========================================================================================================================================
 # Jika user ingin membuat akun baru   
@@ -92,12 +99,11 @@ while True:
             print(f"└{'─'*(len(title2) - 2)}┘")
             
         else:
-            break
-
+            continue
 # ===========================================================================================================================================
 # sistem khusus untuk admin bank, jika admin ingin melihat seluruh akun bank yang terdaftar
     elif choice == '3':
-        if akun_bank == {}:
+        if akun_bank == {}: # Jika belum ada akun yang terdaftar, maka user akan diperingatkan kalimat di bawah ini
             title = "│ Belum ada akun yang terdaftar! │"
             print(f"\n┌{'─'*(len(title) - 2)}┐")
             print(title)
