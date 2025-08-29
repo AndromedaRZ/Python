@@ -31,8 +31,17 @@ while True:
 # ===========================================================================================================================================
 # Jika user ingin login ke sistem bank    
     if choice == '1':
+        nama_verifikasi = input("Masukan nama akun anda: ")
+        pin_verifikasi = input("Masukan pin akun anda: ")
+        rekening_verifikasi = input("Masukan no rekening anda: ")
+        if rekening_verifikasi in akun_bank and nama_verifikasi == akun_bank[rekening_verifikasi]['nama'] and pin_verifikasi == akun_bank[rekening_verifikasi]['pin']:
+            print("found it")
+        else:
+            title = "│ Akun rekening tidak ditemukan! │"
+            print(f"\n┌{'─'*(len(title) - 2)}┐")
+            print(title)
+            print(f"└{'─'*(len(title) - 2)}┘\n")
         
-        continue
     
 # ===========================================================================================================================================
 # Jika user ingin membuat akun baru   
@@ -52,36 +61,38 @@ while True:
                 print(f"\n┌{'─'*(len(title) - 2)}┐")
                 print(title)
                 print(f"└{'─'*(len(title) - 2)}┘\n")
-            
+        
+        pin = int(pin)
         data_sementara['pin'] = pin # membuat key baru bernama 'pin' dan mengambil pin yang tadi dimasukan user sebelumnya untuk dijadikan nilai atau valuenya
         
         KEY = ''.join(random.choices(string.digits, k = 6)) # generate nomor rekening random 6 digit dan menjadikannya key unik
         if KEY not in akun_bank: # untuk memastikan bahwa no rekening yang akan dijadikan key unik tidak sama dengan akun yang sudah terdaftar
+            minimun_saldo = False
+            while minimun_saldo == False:
+                saldo_awal = int(input('Masukan saldo awal [min Rp 50,000]: '))
+                if saldo_awal < 50000:
+                    title = "│ Saldo kurang dari minimum! │"
+
+                    print(f"\n┌{'─'*(len(title) - 2)}┐")
+                    print(title)
+                    print(f"└{'─'*(len(title) - 2)}┘\n")
+                else:
+                    minimun_saldo = True
+                    
+            data_sementara['saldo'] = saldo_awal
+            
+            akun_bank[KEY] = data_sementara.copy() # menyimpan salinan semua data yang ada di dictionary 'data_sementara' ke dictionary utama bernama 'akun_bank' untuk mengumpulkan semua akun yang telah dibuat
+            
+            title = "│ Akun berhasil dibuat     │"
+            title2 = f"│ No Rekening Anda: {KEY} │"
+
+            print(f"\n┌{'─'*(len(title2) - 2)}┐")
+            print(title)
+            print(title2)
+            print(f"└{'─'*(len(title2) - 2)}┘")
+            
+        else:
             break
-        
-        minimun_saldo = False
-        while minimun_saldo == False:
-            saldo_awal = int(input('Masukan saldo awal [min Rp 50,000]: '))
-            if saldo_awal < 50000:
-                title = "│ Saldo kurang dari minimum! │"
-
-                print(f"\n┌{'─'*(len(title) - 2)}┐")
-                print(title)
-                print(f"└{'─'*(len(title) - 2)}┘\n")
-            else:
-                minimun_saldo = True
-                
-        data_sementara['saldo'] = saldo_awal
-        
-        akun_bank[KEY] = data_sementara.copy() # menyimpan salinan semua data yang ada di dictionary 'data_sementara' ke dictionary utama bernama 'akun_bank' untuk mengumpulkan semua akun yang telah dibuat
-        
-        title = "│ Akun berhasil dibuat     │"
-        title2 = f"│ No Rekening Anda: {KEY} │"
-
-        print(f"\n┌{'─'*(len(title2) - 2)}┐")
-        print(title)
-        print(title2)
-        print(f"└{'─'*(len(title2) - 2)}┘")
 
 # ===========================================================================================================================================
 # sistem khusus untuk admin bank, jika admin ingin melihat seluruh akun bank yang terdaftar
