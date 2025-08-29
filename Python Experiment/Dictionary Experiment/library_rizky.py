@@ -9,12 +9,12 @@ rak_buku = {}
 data_peminjaman = {}
 
 with open("data_perpustakaan_rizky.json", "r") as file:
-    data = json.load(file)
-    rak_buku.update(data)
+    data = json.load(file) # memanggil data dari file json eksternal
+    rak_buku.update(data) # mengupdate atau menyalin data yang ada di file json eksternal yang dipanggil ini ke dictionary rak_buku
 
 with open("data_peminjaman_rizky.json", "r") as file:
-    data = json.load(file)
-    data_peminjaman.update(data)
+    data = json.load(file) # memanggil data dari file json eksternal
+    data_peminjaman.update(data) # mengupdate atau menyalin data yang ada di file json eksternal yang dipanggil ini ke dictionary data_peminjaman
 
 title = "│ SELAMAT DATANG DI PERPUSTAKAAN RIZKY │"
 
