@@ -30,9 +30,26 @@ while True:
     
 # ===========================================================================================================================================
 # Jika user ingin login ke sistem bank    
-    if choice == '1':
-        
-        continue
+    if choice == '1':  
+        if akun_bank == {}: # Jika belum ada akun yang terdaftar, maka user akan diperingatkan kalimat di bawah ini
+            title = "│ Belum ada akun yang terdaftar! │"
+            print(f"\n┌{'─'*(len(title) - 2)}┐")
+            print(title)
+            print(f"└{'─'*(len(title) - 2)}┘")
+        else:
+            nama_verifikasi = input("Masukan nama akun anda: ")
+            pin_verifikasi = int(input("Masukan pin akun anda: "))
+            verifikasi = []
+            
+            for key, value in akun_bank.items(): # akan memeriksa dictionary akun_bank menggunakan for loop untuk mengecek apakah ada nama dan pin yang cocok dengan yang dimasukan user
+                if nama_verifikasi in value['nama'] and pin_verifikasi == value['pin']:
+                    verifikasi.append(key)
+            if verifikasi:
+                print(akun_bank)
+                print("akun ditemukan!")       
+            else:
+                print("akun tidak ditemukan")
+                    
     
 # ===========================================================================================================================================
 # Jika user ingin membuat akun baru   
@@ -57,36 +74,37 @@ while True:
         
         KEY = ''.join(random.choices(string.digits, k = 6)) # generate nomor rekening random 6 digit dan menjadikannya key unik
         if KEY not in akun_bank: # untuk memastikan bahwa no rekening yang akan dijadikan key unik tidak sama dengan akun yang sudah terdaftar
-            break
-        
-        minimun_saldo = False
-        while minimun_saldo == False:
-            saldo_awal = int(input('Masukan saldo awal [min Rp 50,000]: '))
-            if saldo_awal < 50000:
-                title = "│ Saldo kurang dari minimum! │"
+            minimun_saldo = False
+            while minimun_saldo == False:
+                saldo_awal = int(input('Masukan saldo awal [min Rp 50,000]: '))
+                if saldo_awal < 50000:
+                    title = "│ Saldo kurang dari minimum! │"
 
-                print(f"\n┌{'─'*(len(title) - 2)}┐")
-                print(title)
-                print(f"└{'─'*(len(title) - 2)}┘\n")
-            else:
-                minimun_saldo = True
-                
-        data_sementara['saldo'] = saldo_awal
-        
-        akun_bank[KEY] = data_sementara.copy() # menyimpan salinan semua data yang ada di dictionary 'data_sementara' ke dictionary utama bernama 'akun_bank' untuk mengumpulkan semua akun yang telah dibuat
-        
-        title = "│ Akun berhasil dibuat     │"
-        title2 = f"│ No Rekening Anda: {KEY} │"
+                    print(f"\n┌{'─'*(len(title) - 2)}┐")
+                    print(title)
+                    print(f"└{'─'*(len(title) - 2)}┘\n")
+                else:
+                    minimun_saldo = True
+                    
+            data_sementara['saldo'] = saldo_awal
+            
+            akun_bank[KEY] = data_sementara.copy() # menyimpan salinan semua data yang ada di dictionary 'data_sementara' ke dictionary utama bernama 'akun_bank' untuk mengumpulkan semua akun yang telah dibuat
+            
+            title = "│ Akun berhasil dibuat     │"
+            title2 = f"│ No Rekening Anda: {KEY} │"
 
-        print(f"\n┌{'─'*(len(title2) - 2)}┐")
-        print(title)
-        print(title2)
-        print(f"└{'─'*(len(title2) - 2)}┘")
+            print(f"\n┌{'─'*(len(title2) - 2)}┐")
+            print(title)
+            print(title2)
+            print(f"└{'─'*(len(title2) - 2)}┘")
+            
+        else:
+            continue
 
 # ===========================================================================================================================================
 # sistem khusus untuk admin bank, jika admin ingin melihat seluruh akun bank yang terdaftar
     elif choice == '3':
-        if akun_bank == {}:
+        if akun_bank == {}: # Jika belum ada akun yang terdaftar, maka user akan diperingatkan kalimat di bawah ini
             title = "│ Belum ada akun yang terdaftar! │"
             print(f"\n┌{'─'*(len(title) - 2)}┐")
             print(title)
