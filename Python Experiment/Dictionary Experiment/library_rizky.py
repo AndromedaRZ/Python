@@ -9,12 +9,12 @@ rak_buku = {}
 data_peminjaman = {}
 
 with open("data_perpustakaan_rizky.json", "r") as file:
-    data = json.load(file)
-    rak_buku.update(data)
+    data = json.load(file) # memanggil data dari file json eksternal
+    rak_buku.update(data) # mengupdate atau menyalin data yang ada di file json eksternal yang dipanggil ini ke dictionary rak_buku
 
 with open("data_peminjaman_rizky.json", "r") as file:
-    data = json.load(file)
-    data_peminjaman.update(data)
+    data = json.load(file) # memanggil data dari file json eksternal
+    data_peminjaman.update(data) # mengupdate atau menyalin data yang ada di file json eksternal yang dipanggil ini ke dictionary data_peminjaman
 
 title = "│ SELAMAT DATANG DI PERPUSTAKAAN RIZKY │"
 
@@ -179,17 +179,18 @@ while True:
                         print(f"└{'─'*(len(title) - 2)}┘")
                 
                     elif choice2 == '3':
-                        if rak_buku[ubah_buku]['total'] > rak_buku[ubah_buku]['stok']:  # jika stok total lebih sedikit dari stok yang tersedia, maka stok total tidak bisa diubah
-                            title = "│ Stok buku tidak dapat diperbarui! │"
+                        sedang_dipinjam = rak_buku[ubah_buku]['total'] - rak_buku[ubah_buku]['stok'] # variabel sedang_dipinjam adalah jumlah buku yang sedang dipinjam
+                        stok_terbaru = int(input("Masukan stok terbaru: "))
+                        # stok tersedia tidak boleh lebih banyak dari stok terbaru ataupun stok total
+                        if stok_terbaru < sedang_dipinjam: # jika stok terbaru nilainya lebih kecil daripada yang sedang dipinjam, maka sistem tidak akan memperbolehkannya karena buku yang sedang dipinjam tidak akan terhitung
+                            title = "│ Stok buku tidak dapat diperbarui, buku sedang dipinjam! │"
                             print(f"\n┌{'─'*(len(title) - 2)}┐")
                             print(title)
                             print(f"└{'─'*(len(title) - 2)}┘")
                         
                         else:
-                            stok_terbaru = int(input("Masukan stok terbaru: "))
-                            stok = rak_buku[ubah_buku]['total']
-                            rak_buku[ubah_buku]['total'] = stok_terbaru
-                            rak_buku[ubah_buku]['stok'] = rak_buku[ubah_buku]['total'] # jika jumlah stok total berubah, maka stok tersedia juga akan mengikuti jumlah stok total
+                            rak_buku[ubah_buku]['total'] = stok_terbaru # memasukan nilai stok terbaru ke buku yang sedang diubah
+                            rak_buku[ubah_buku]['stok'] = stok_terbaru - sedang_dipinjam # memasukan nilai stok tersedia ke buku yang sedang diubah dengan menggunakan perhitungan sederhana agat tidak melanggar aturan stok total
                             
                             title = "│ Stok buku berhasil diperbarui │"
                             print(f"\n┌{'─'*(len(title) - 2)}┐")
@@ -304,7 +305,7 @@ while True:
                         print(f"└{"─"*(len(title) - 2)}┘")
                     else:
                         
-                        KEY = 'B' + ''.join(random.choices(string.digits, k = 3)) # mengenerate kode random yang dimulai dari huruf "B" dengan total kode sebanyak 4 digit dan menjadikannya key unik
+                        KEY = 'P' + ''.join(random.choices(string.digits, k = 3)) # mengenerate kode random yang dimulai dari huruf "B" dengan total kode sebanyak 4 digit dan menjadikannya key unik
                         
                         peminjaman_sementara = {
                             "kode": dipinjam,
@@ -330,7 +331,7 @@ while True:
 # =======================================================================
 # Jika user memilih untuk mengembalikan buku yang dipinjam dari perpustakaan
     elif choice == "8":
-        dikembalikan = input("Masukan kode buku yang ingin anda kembalikan: ").capitalize()
+        dikembalikan = input("Masukan kode transaksi yang ingin anda kembalikan: ").capitalize()
 
         if dikembalikan in data_peminjaman and data_peminjaman[dikembalikan]['status'] == 'dipinjam': # memeriksa apakah kode buku yang dimasukan oleh peminjam buku sama dengan yang ada di daftar peminjaman dan status buku tersebut juga sedang dipinjam
             nama_peminjam = input("Masukan nama peminjam: ").title()
