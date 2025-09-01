@@ -28,7 +28,7 @@ while True:
 4) Keluar''')
     choice = input("Pilih menu [1/2/3/4]: ")
     
-# ===========================================================================================================================================
+# =========================================================================================================================================
 # Jika user ingin login ke sistem bank    
     if choice == '1':  
         if akun_bank == {}: # Jika belum ada akun yang terdaftar, maka user akan diperingatkan kalimat di bawah ini
@@ -38,20 +38,114 @@ while True:
             print(f"└{'─'*(len(title) - 2)}┘")
         else:
             nama_verifikasi = input("Masukan nama akun anda: ")
-            pin_verifikasi = int(input("Masukan pin akun anda: "))
-            verifikasi = []
-            
-            for key, value in akun_bank.items(): # akan memeriksa dictionary akun_bank menggunakan for loop untuk mengecek apakah ada nama dan pin yang cocok dengan yang dimasukan user
-                if nama_verifikasi in value['nama'] and pin_verifikasi == value['pin']:
-                    verifikasi.append(key)
-            if verifikasi:
-                print(akun_bank)
-                print("akun ditemukan!")       
-            else:
-                print("akun tidak ditemukan")
+            pin_verifikasi = input("Masukan pin akun anda: ") 
+            if pin_verifikasi.isdigit() and len(pin_verifikasi) == 6: # memastikan bahwa pin yang dimasukan hanyalah angka dan panjangnya 6 digit tidak kurang dan lebih
+                
+                akun_login = []
+                
+                pin_matched = False
+                for key, value in akun_bank.items(): # akan memeriksa dictionary akun_bank menggunakan for loop untuk mengecek apakah ada nama dan pin yang cocok dengan yang dimasukan user untuk login
+                    if nama_verifikasi in value['nama'] and pin_verifikasi in value['pin']: # memeriksa apakah nama dan pin yang dimasukan user cocok atau tidak dengan dengan yang ada di dictionary utama (akun_bank)
+                        akun_login.append(key) # memasukan no rekening dari akun yang sedang login ke dictionary verifikasi
+                        pin_matched = True
+                        
+                if akun_login:
+                    for key in akun_login:
+                        title = "│ Login Berhasil │"
+                        print(f"\n┌{'─'*(len(title) - 2)}┐")
+                        print(title)
+                        print(f"└{'─'*(len(title) - 2)}┘")
+                        while True:
+                            print()
+                            print("⎼"*20)
+                            print(f'{"Menu Akun":^20}')
+                            print("⎼"*20)
+                            print('''1) Informasi Akun
+2) Setor Tunai
+3) Tarik Tunai
+4) Transfer
+5) Logout''')
+                            choice = input("Pilih Menu [1-5]: ")
+# ========================================================================================================================================
+# Jika user memilih untuk melihat informasi akun banknya                    
+                            if choice == '1':
+                                NAMA = akun_bank[key]['nama']
+                                SALDO = akun_bank[key]['saldo']
+                                title = f"│ {'Nama Akun':<14} │ {'No Rekening':<11} │"
+                                value = f"│ {NAMA:<14} │ {key:<11} │"
+                                value2 = f"│ {'Sisa Saldo: ':<10}Rp {SALDO:<13} │"
+                                for key in akun_login:
+                                    print(f"\n┌────────────────┬─────────────┐")
+                                    print(title)
+                                print(f"├────────────────┼─────────────┤")
+                                print(value)
+                                print(f"├────────────────┴─────────────┤")
+                                print(value2)
+                                print(f"└──────────────────────────────┘")
+                                
+# ========================================================================================================================================
+# Jika user memilih untuk setor tunai ke rekeningnya                  
+                            elif choice == '2':
+                                deposit = int(input("Masukan jumlah uang (Rp): "))
+                                confirm = input("Konfirmasi setor yes/batal [y/n]: ").lower()
+                                if confirm == 'y':
+                                    for key in akun_login:
+                                        akun_bank[key]['saldo'] += deposit
+                                        title = "│ Setor tunai berhasil │"
+                                        print(f"\n┌{'─'*(len(title) - 2)}┐")
+                                        print(title)
+                                        print(f"└{'─'*(len(title) - 2)}┘")
+                                
+                                elif confirm == 'n':
+                                    title = "│ Setor tunai dibatalkan │"
+                                    print(f"\n┌{'─'*(len(title) - 2)}┐")
+                                    print(title)
+                                    print(f"└{'─'*(len(title) - 2)}┘")
+                                    
+                                else:
+                                    title = "│ Setor tunai gagal │"
+                                    print(f"\n┌{'─'*(len(title) - 2)}┐")
+                                    print(title)
+                                    print(f"└{'─'*(len(title) - 2)}┘")
+
+# ========================================================================================================================================
+# Jika user memilih untuk tarik tunai dari rekeningnya                     
+                            elif choice == '3':
+                                while True:
+                                    print('''1) + Rp 50,000
+2) - Rp 50,000
+3) Tarik tunai
+4) Kembali''')
+                                    choice_ = 
+                                
                     
-    
-# ===========================================================================================================================================
+# ========================================================================================================================================
+# Jika user memilih untuk transfer saldo ke rekening lain                   
+                            elif choice == '4':
+                                    continue
+                    
+# ========================================================================================================================================
+# Jika user memilih untuk keluar dari akun                 
+                            elif choice == '5':
+                                    title = "│ Logout berhasil │"
+                                    print(f"\n┌{'─'*(len(title) - 2)}┐")
+                                    print(title)
+                                    print(f"└{'─'*(len(title) - 2)}┘")
+                                    break      
+                else:
+                    title = "│ Login gagal │"
+                    print(f"\n┌{'─'*(len(title) - 2)}┐")
+                    print(title)
+                    print(f"└{'─'*(len(title) - 2)}┘")
+                             
+                        
+            else:
+                title = "│ Login gagal │"
+                print(f"\n┌{'─'*(len(title) - 2)}┐")
+                print(title)
+                print(f"└{'─'*(len(title) - 2)}┘")
+                
+# =========================================================================================================================================
 # Jika user ingin membuat akun baru   
     elif choice == '2':
         data_sementara = {} # data sementara yang digunakan untuk menampung data untuk membuat akun
@@ -69,7 +163,7 @@ while True:
                 print(f"\n┌{'─'*(len(title) - 2)}┐")
                 print(title)
                 print(f"└{'─'*(len(title) - 2)}┘\n")
-            
+        
         data_sementara['pin'] = pin # membuat key baru bernama 'pin' dan mengambil pin yang tadi dimasukan user sebelumnya untuk dijadikan nilai atau valuenya
         
         KEY = ''.join(random.choices(string.digits, k = 6)) # generate nomor rekening random 6 digit dan menjadikannya key unik
@@ -100,8 +194,7 @@ while True:
             
         else:
             continue
-
-# ===========================================================================================================================================
+# =========================================================================================================================================
 # sistem khusus untuk admin bank, jika admin ingin melihat seluruh akun bank yang terdaftar
     elif choice == '3':
         if akun_bank == {}: # Jika belum ada akun yang terdaftar, maka user akan diperingatkan kalimat di bawah ini
@@ -122,7 +215,7 @@ while True:
                 print(f"│ {i+1:<3} {NAMA:<15} {KEY:<12} {PIN:<9} Rp {SALDO:<12,} │")
             print(f"└{'─'*(len(title) - 2)}┘")
 
-# ===========================================================================================================================================
+# =========================================================================================================================================
 # Jika user ingin keluar dari menu bank (otomatis akan mematikan program)
     elif choice == '4':
         with open("data_akun_bank.json", "w") as file:
