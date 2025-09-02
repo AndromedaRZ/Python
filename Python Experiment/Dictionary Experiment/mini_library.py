@@ -16,7 +16,7 @@ with open("mini_library.json", "r") as f:
     data = json.load(f)
     koleksi_buku.update(data)   # pindahkan data JSON ke dictionary kosong
 
-with open("D:\Coding\Python\Python Experiment\Dictionary Experiment\data_peminjaman.json", "r") as f:
+with open("data_peminjaman.json", "r") as f:
     data = json.load(f)
     peminjaman.update(data)
 
