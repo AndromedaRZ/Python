@@ -41,16 +41,18 @@ while True:
             pin_verifikasi = input("Masukan pin akun anda: ") 
             if pin_verifikasi.isdigit() and len(pin_verifikasi) == 6: # memastikan bahwa pin yang dimasukan hanyalah angka dan panjangnya 6 digit tidak kurang dan lebih
                 
-                akun_login = {}
+                akun_login = []
                 
                 pin_matched = False
                 for key, value in akun_bank.items(): # akan memeriksa dictionary akun_bank menggunakan for loop untuk mengecek apakah ada nama dan pin yang cocok dengan yang dimasukan user untuk login
                     if nama_verifikasi in value['nama'] and pin_verifikasi in value['pin']: # memeriksa apakah nama dan pin yang dimasukan user cocok atau tidak dengan dengan yang ada di dictionary utama (akun_bank)
-                        akun_login = key # memasukan no rekening dari akun yang sedang login ke dictionary verifikasi
+                        akun_login.append(key) # memasukan no rekening dari akun yang sedang login ke dictionary verifikasi
                         pin_matched = True
                         
                 if akun_login:
                     for key in akun_login:
+                        print(akun_login)
+                        print(key)
                         title = "│ Login Berhasil │"
                         print(f"\n┌{'─'*(len(title) - 2)}┐")
                         print(title)
@@ -135,22 +137,24 @@ while True:
                                             confirm = input(f"Ingin tarik tunai sebesar Rp {tarik_tunai}? [y/n]: ")
                                             if confirm == 'y':
                                                 pin_verifikasi = input("Masukan pin anda: ")
+
+                                                rekening = akun_login[0] # mengambil nilai index ke-0 dari list akun_bank untuk dijadikan patokan key unik yang sama dengan yang ada di dictionary utama akun_bank
                                                 
-                                                if pin_verifikasi.isdigit() and len(pin_verifikasi) == 6:
-                                                    pin_matched = False
-                                                    
-                                                    for key, value in akun_bank.items():
-                                                        if pin_verifikasi == akun_bank[akun_login]['pin']:
-                                                            pin_matched = True
-                                                    
-                                                    if pin_matched:
-                                                        akun_bank[akun_login]['saldo'] -= tarik_tunai
-                                                        print("Tarik berhasil")
+                                                if pin_verifikasi.isdigit() and len(pin_verifikasi) == 6 and pin_verifikasi == akun_bank[rekening]['pin']:
+                                                    if akun_bank[rekening]['saldo'] >= tarik_tunai:
+                                                        akun_bank[rekening]['saldo'] -= tarik_tunai
+                                                        print("Tarik tunai berhasil")
                                                         tarik_tunai = 0
+                                                        break
+                                                    else:
+                                                        print("Saldo tidak cukup")
+                                                        tarik_tunai = 0
+                                                        break
                                                     
                                                 else:
                                                     print("Tarik tunai gagal")   
                                                     tarik_tunai = 0
+                                                    break
                                             else:
                                                 tarik_tunai = 0
                                                 break    
