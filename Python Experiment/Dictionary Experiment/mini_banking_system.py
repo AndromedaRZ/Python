@@ -41,12 +41,12 @@ while True:
             pin_verifikasi = input("Masukan pin akun anda: ") 
             if pin_verifikasi.isdigit() and len(pin_verifikasi) == 6: # memastikan bahwa pin yang dimasukan hanyalah angka dan panjangnya 6 digit tidak kurang dan lebih
                 
-                akun_login = []
+                akun_login = {}
                 
                 pin_matched = False
                 for key, value in akun_bank.items(): # akan memeriksa dictionary akun_bank menggunakan for loop untuk mengecek apakah ada nama dan pin yang cocok dengan yang dimasukan user untuk login
                     if nama_verifikasi in value['nama'] and pin_verifikasi in value['pin']: # memeriksa apakah nama dan pin yang dimasukan user cocok atau tidak dengan dengan yang ada di dictionary utama (akun_bank)
-                        akun_login.append(key) # memasukan no rekening dari akun yang sedang login ke dictionary verifikasi
+                        akun_login = key # memasukan no rekening dari akun yang sedang login ke dictionary verifikasi
                         pin_matched = True
                         
                 if akun_login:
@@ -87,7 +87,7 @@ while True:
 # Jika user memilih untuk setor tunai ke rekeningnya                  
                             elif choice == '2':
                                 deposit = int(input("Masukan jumlah uang (Rp): "))
-                                confirm = input("Konfirmasi setor yes/batal [y/n]: ").lower()
+                                confirm = input("Konfirmasi setor [y/n]: ").lower()
                                 if confirm == 'y':
                                     for key in akun_login:
                                         akun_bank[key]['saldo'] += deposit
@@ -111,12 +111,52 @@ while True:
 # ========================================================================================================================================
 # Jika user memilih untuk tarik tunai dari rekeningnya                     
                             elif choice == '3':
+                                tarik_tunai = 0
                                 while True:
+                                    print(f"\nNominal: Rp {tarik_tunai} ")
                                     print('''1) + Rp 50,000
 2) - Rp 50,000
 3) Tarik tunai
 4) Kembali''')
-
+                                    choice = input("Pilih menu [1/4]: ")
+                                    if choice == '1':
+                                        tarik_tunai += 50000
+                                    
+                                    elif choice == '2':
+                                        if tarik_tunai <= 0:
+                                            continue
+                                        else:
+                                            tarik_tunai -= 50000
+                                    
+                                    elif choice == '3':
+                                        if tarik_tunai == 0:
+                                            print("Masukan nominal terlebih dahulu")
+                                        else:
+                                            confirm = input(f"Ingin tarik tunai sebesar Rp {tarik_tunai}? [y/n]: ")
+                                            if confirm == 'y':
+                                                pin_verifikasi = input("Masukan pin anda: ")
+                                                
+                                                if pin_verifikasi.isdigit() and len(pin_verifikasi) == 6:
+                                                    pin_matched = False
+                                                    
+                                                    for key, value in akun_bank.items():
+                                                        if pin_verifikasi == akun_bank[akun_login]['pin']:
+                                                            pin_matched = True
+                                                    
+                                                    if pin_matched:
+                                                        akun_bank[akun_login]['saldo'] -= tarik_tunai
+                                                        print("Tarik berhasil")
+                                                        tarik_tunai = 0
+                                                    
+                                                else:
+                                                    print("Tarik tunai gagal")   
+                                                    tarik_tunai = 0
+                                            else:
+                                                tarik_tunai = 0
+                                                break    
+                                                
+                                    elif choice == '4':
+                                        break
                                 
                     
 # ========================================================================================================================================
