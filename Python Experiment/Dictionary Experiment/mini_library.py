@@ -464,7 +464,7 @@ while True:
         with open('mini_library.json', 'w') as file: # untuk menyimpan perubahan yang terjadi di dalam dictionary inventaris ke dalam file eksternal bernama inventaris.json
             json.dump(koleksi_buku, file, indent= 4) # indent = 4 untuk format yang rapi
         
-        with open('D:\Coding\Python\Python Experiment\Dictionary Experiment\data_peminjaman.json', 'w') as file:
+        with open('data_peminjaman.json', 'w') as file:
             json.dump(peminjaman, file, indent= 4)
         
         print("Program perpusatakaan mini selesai.")
