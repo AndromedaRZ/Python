@@ -1,6 +1,6 @@
 # program sistem mini banking
 
-import os, json, datetime, random, string
+import os, json, datetime, random, string, time, sys
 
 os.system("clear")
 
@@ -76,9 +76,8 @@ while True:
                                 title = f"│ {'Nama Akun':<14} │ {'No Rekening':<11} │"
                                 value = f"│ {NAMA:<14} │ {key:<11} │"
                                 value2 = f"│ {'Sisa Saldo: ':<10}Rp {SALDO:<13} │"
-                                for key in akun_login:
-                                    print(f"\n┌────────────────┬─────────────┐")
-                                    print(title)
+                                print(f"\n┌────────────────┬─────────────┐")
+                                print(title)
                                 print(f"├────────────────┼─────────────┤")
                                 print(value)
                                 print(f"├────────────────┴─────────────┤")
@@ -115,7 +114,7 @@ while True:
                             elif choice == '3':
                                 tarik_tunai = 0
                                 while True:
-                                    print(f"\nNominal: Rp {tarik_tunai} ")
+                                    print(f"\nNominal: Rp {tarik_tunai:,} ")
                                     print('''1) + Rp 50,000
 2) - Rp 50,000
 3) Tarik tunai
@@ -143,18 +142,25 @@ while True:
                                                 if pin_verifikasi.isdigit() and len(pin_verifikasi) == 6 and pin_verifikasi == akun_bank[rekening]['pin']:
                                                     if akun_bank[rekening]['saldo'] >= tarik_tunai:
                                                         akun_bank[rekening]['saldo'] -= tarik_tunai
-                                                        print("Tarik tunai berhasil")
+                                                        title = "│ Tarik tunai berhasil │"
+                                                        print(f"\n┌{'─'*(len(title) - 2)}┐")
+                                                        print(title)
+                                                        print(f"└{'─'*(len(title) - 2)}┘") 
                                                         tarik_tunai = 0
                                                         break
                                                     else:
-                                                        print("Saldo tidak cukup")
+                                                        title = "│ Saldo tidak cukup │"
+                                                        print(f"\n┌{'─'*(len(title) - 2)}┐")
+                                                        print(title)
+                                                        print(f"└{'─'*(len(title) - 2)}┘") 
                                                         tarik_tunai = 0
-                                                        break
                                                     
                                                 else:
-                                                    print("Tarik tunai gagal")   
+                                                    title = "│ Tarik tunai gagal │"
+                                                    print(f"\n┌{'─'*(len(title) - 2)}┐")
+                                                    print(title)
+                                                    print(f"└{'─'*(len(title) - 2)}┘")   
                                                     tarik_tunai = 0
-                                                    break
                                             else:
                                                 tarik_tunai = 0
                                                 break    
@@ -166,7 +172,80 @@ while True:
 # ========================================================================================================================================
 # Jika user memilih untuk transfer saldo ke rekening lain                   
                             elif choice == '4':
-                                    continue
+                                rekening_destination = input("Masukan rekening tujuan transfer: ")
+                                    
+                                animasi = ["|", "/", "-", "\\"]
+
+                                for i in range(20):  # loop 20 kali
+                                    simbol = animasi[i % len(animasi)]  # ambil simbol secara bergantian
+                                    sys.stdout.write(f"\rMencari rekening tujuan {simbol}")  
+                                    sys.stdout.flush()
+                                    time.sleep(0.2)
+                                
+                                print()
+                                if rekening_destination in akun_bank:
+                                    title = "│ Rekening ditemukan │"
+                                    print(f"\n┌{'─'*(len(title) - 2)}┐")
+                                    print(title)
+                                    print(f"└{'─'*(len(title) - 2)}┘") 
+                                    time.sleep(1)
+                                    
+                                        
+                                    NAMA = akun_bank[rekening_destination]['nama']
+                                    title = f"│ {'Nama Akun':<14} │ {'No Rekening':<11} │"
+                                    value = f"│ {NAMA:<14} │ {rekening_destination:<11} │"
+                                    print(f"┌────────────────┬─────────────┐")
+                                    print(title)
+                                    print(f"├────────────────┼─────────────┤")
+                                    print(value)
+                                    print(f"└────────────────┴─────────────┘")
+                                    
+                                    amount = int(input("Masukan nominal transfer: Rp "))
+                                    
+                                    rekening = akun_login[0] # mengambil no rekening akun yang login untuk dijadikan key uniknya sebagai kunci saat transfer
+                                    if amount > akun_bank[rekening]['saldo']:
+                                        title = "│ Saldo tidak cukup │"
+                                        print(f"\n┌{'─'*(len(title) - 2)}┐")
+                                        print(title)
+                                        print(f"└{'─'*(len(title) - 2)}┘")                                         
+                                    
+                                    else:
+                                        confirm = input("Konfirmasi transfer [y/n]: ")
+                                        if confirm == 'y':
+                                            pin_verifikasi = input("Masukan pin anda: ")
+                                            if pin_verifikasi == akun_bank[rekening]['pin'] and len(pin_verifikasi) == 6:
+                                                akun_bank[rekening]['saldo'] -= amount
+                                                akun_bank[rekening_destination]['saldo'] += amount
+                                                
+                                                title = "│ Transfer berhasil │"
+                                                print(f"\n┌{'─'*(len(title) - 2)}┐")
+                                                print(title)
+                                                print(f"└{'─'*(len(title) - 2)}┘")
+                                                time.sleep(1)
+                                                
+                                                
+                                            
+                                            else:
+                                                title = "│ Transfer gagal │"
+                                                print(f"\n┌{'─'*(len(title) - 2)}┐")
+                                                print(title)
+                                                print(f"└{'─'*(len(title) - 2)}┘")
+                                                continue
+                                                
+                                        else:
+                                            title = "│ Transfer dibatalkan │"
+                                            print(f"\n┌{'─'*(len(title) - 2)}┐")
+                                            print(title)
+                                            print(f"└{'─'*(len(title) - 2)}┘")
+                                            continue
+                                            
+                                else:
+                                    title = "│ Rekening tidak ditemukan │"
+                                    print(f"\n┌{'─'*(len(title) - 2)}┐")
+                                    print(title)
+                                    print(f"└{'─'*(len(title) - 2)}┘") 
+                                        
+                                    
                     
 # ========================================================================================================================================
 # Jika user memilih untuk keluar dari akun                 
