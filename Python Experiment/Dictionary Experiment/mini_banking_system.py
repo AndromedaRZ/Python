@@ -223,6 +223,20 @@ while True:
                                                 print(f"└{'─'*(len(title) - 2)}┘")
                                                 time.sleep(1)
                                                 
+                                                title = "│         Bukti Transfer         │"
+                                                waktu = datetime.datetime.now().strftime("%d/%m/%Y %H:%M:%S")
+                                                print(f"\n┌{'─'*(len(title) - 2)}┐")
+                                                print(title)
+                                                print(f"├{'─'*(len(title) - 2)}┤")
+                                                print(f"│ Tanggal: {waktu:<21} │")
+                                                print(f"│ Dari   : {rekening:<21} │")
+                                                print(f"│ Ke     : {rekening_destination:<21} │")
+                                                print(f"│ Nama   : {akun_bank[rekening_destination]['nama']:<21} │")
+                                                print(f"│ Jumlah : Rp {amount:<18,} │")
+                                                print(f"│ Status : {'Berhasil':<21} │")
+                                                print(f"└{'─'*(len(title) - 2)}┘")
+                                                
+                                                
                                                 
                                             
                                             else:
