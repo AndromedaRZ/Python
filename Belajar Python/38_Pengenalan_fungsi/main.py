@@ -10,7 +10,7 @@ Function dalam python adalah sekumpulan kode yang dibuat untuk menjalankan tugas
 
 '''
 def nama_function(): <- 
-    # bisa ditambahkan catatan untuk fungsinya
+    # bisa ditambahkan catatan untuk fungsinya (doc string)
     print("Hello World!") <- isi kode function 
 '''
 
