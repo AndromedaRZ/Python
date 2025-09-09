@@ -40,9 +40,15 @@ def fx_to_idr(jumlah_fx: float, kode_fx: str):
 
 def format_fx(nominal, simbol, desimal):
     '''fungsi mengatur format fx'''
-    nilai = round(nominal, desimal)
-    nilai = f"{nilai:.{desimal}f}".rstrip('0').rstrip('.')
-    return f"{nilai}{simbol}"
+    nilai = round(nominal, 2)
+    if simbol == "¥":
+        nilai = int(nilai)
+        nilai = f"{nilai:,}".replace(",",".")
+        return f"{simbol}{nilai}"
+    else:
+        nilai = f"{nilai:,.2f}".replace(",",".")
+        return f"{simbol}{nilai}"
+
 
 
 while True:
@@ -58,9 +64,12 @@ while True:
 # ================================================================================
 # 1. Melihat dafar kurs
     if choice == '1':
+        print("======================")
         for KEY, money in kurs.items():
-            print(f"{KEY}: 1 {KEY} = {money}")
-            
+            print(f"{KEY}: {mata_uang[KEY]['simbol']}1 = Rp{money:,}".replace(",","."))
+
+        print("======================")
+
 # ================================================================================
 # 2. Konversi rupiah ke fx         
     if choice == '2':
@@ -111,7 +120,10 @@ while True:
             kode_fx = "JPY"
         elif conv == '4':
             kode_fx = "SGD"
-        
+        else:
+            print("Masukkan input hanya dari 1 sampai 4!")
+            continue
+
         jumlah_fx = float(input(f"Masukkan nilai uang mata uang dalam {kode_fx}: "))
         
         while jumlah_fx <= 0:
@@ -157,6 +169,9 @@ while True:
                 kode_fx = "JPY"
             elif conv == '3':
                 kode_fx = "SGD"
+            else:
+                print("Input tidak valid!")
+                continue
                 
         elif conv == '2':
             kode_fx_awal = "EUR"
@@ -178,6 +193,9 @@ while True:
                 kode_fx = "JPY"
             elif conv == '3':
                 kode_fx = "SGD"
+            else:
+                print("Input tidak valid!")
+                continue
             
         elif conv == '3':
             kode_fx_awal = "JPY"
@@ -199,6 +217,9 @@ while True:
                 kode_fx = "EUR"
             elif conv == '3':
                 kode_fx = "SGD"
+            else:
+                print("Input tidak valid!")
+                continue
             
         elif conv == '4':
             kode_fx_awal = "SGD"
@@ -220,7 +241,14 @@ while True:
                 kode_fx = "EUR"
             elif conv == '3':
                 kode_fx = "JPY"
+            else:
+                print("Input tidak valid!")
+                continue
         
+        else:
+            print("Input tidak valid!")
+            continue
+
         jadi_idr = fx_to_idr(jumlah_fx, kode_fx_awal)
         jumlah_fx = format_fx(jumlah_fx, mata_uang[kode_fx_awal]['simbol'], mata_uang[kode_fx_awal]['desimal'])
         hasil = idr_to_fx(jadi_idr, kode_fx)
