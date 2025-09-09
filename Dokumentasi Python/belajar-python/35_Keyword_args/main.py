@@ -1,10 +1,13 @@
 '''**kwargs (Keyword Arguments)'''
 
+'''
 def fungsi(nama, tinggi, berat):
-    '''fungsi biasa'''
+    # fungsi biasa
     print(f"{nama} punya tinggi {tinggi} cm dan berat {berat} kg")
+    
+'''
 
-fungsi("ucup", 180, 60)
+# fungsi("ucup", 180, 60)
 
 def fungsi(**kwargs):
     '''fungsi kwargs'''
@@ -12,6 +15,8 @@ def fungsi(**kwargs):
     tinggi = kwargs['tinggi']
     berat = kwargs['berat']
     print(f"{nama} punya tinggi {tinggi} dan berat {berat}")
+    print(type(kwargs))
+    print(kwargs)
 
 fungsi(nama="ucup", tinggi=180, berat=60) # menjadi dictionary
 
