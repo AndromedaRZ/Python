@@ -1,7 +1,5 @@
 '''Kalkulator mata uang'''
 
-from decimal import Decimal, ROUND_HALF_UP
-
 # kurs terhadap IDR (1 unit FX = x Rupiah)
 kurs = {
     "USD": 16400, # 1 dolar amerika = Rp16.400
@@ -23,11 +21,6 @@ def idr_to_fx(jumlah_idr: float, kode_fx: str) -> float:
     '''fungsi mengubah idr ke fx'''
     hasil = jumlah_idr / kurs[kode_fx]
     return hasil
-        
-# def bulatkan(nominal: float, desimal: int) -> float:
-    '''fungsi membulatkan fx'''
-    q = Decimal(10) ** -desimal
-    return float(Decimal(nominal).quantize(q, rounding=ROUND_HALF_UP))
 
 def format_idr(nominal):
     '''fungsi mengatur format idr'''
@@ -48,8 +41,6 @@ def format_fx(nominal, simbol, desimal):
     else:
         nilai = f"{nilai:,.2f}".replace(",",".")
         return f"{simbol}{nilai}"
-
-
 
 while True:
     print('''
@@ -101,7 +92,6 @@ while True:
 
         print(f"{jumlah_idr} bila dikonversi ke {kode_fx} akan menjadi {hasil}")
 
-
 # ================================================================================
 # 3. Konversi fx ke rupiah     
     if choice == '3':
@@ -146,8 +136,6 @@ while True:
         print("3. JPY (Yen)")
         print("4. SGD (Singapore Dollar)")
         conv = input("Pilih mata uang yang ingin dikonversi [1/2/3/4]: ")
-        
-        
         
         if conv == '1':
             kode_fx_awal = "USD"
