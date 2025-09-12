@@ -12,8 +12,9 @@ fungsi("rizky", 160, 40)
 
 
 # contoh penggunaan *args
-def fungsi(*args): # cara menggunakan *args adalah dengan menambahkan simbol bintang (*) di depan parameter pada fungsi yang kita buat, namanya juga tidak harus args, kita bisa menggunakan nama lain karena args didefiniskan menggunakan simbol bintang di depan parameternya
+def fungsi(*args): # cara menggunakan *args adalah dengan menambahkan simbol bintang (*) di depan parameter pada fungsi yang kita buat, namanya juga tidak harus "args", kita bisa menggunakan nama lain karena args didefiniskan menggunakan simbol bintang di depan parameternya
     '''fungsi data diri menggunakan *args'''
+    print(type(args))
     nama = args[0]
     tinggi = args[1]
     berat = args[2]
@@ -48,3 +49,16 @@ def say_hi(sapa, *nama):
         print(f"{sapa}, {orang}")
         
 say_hi("Halo", "Rizky", "Ricky", "Indra") # kita bisa menamabahkan argumen yang banyak untuk parameter *argsnya
+
+'''
+#args selalu bertipe data tuple, jadi tidak bisa langung diakses atau dimofifikasi seperti list, jika ingin diakses, kita harus mengcastingnya terlebih dahulu ke tipe data list atau ubah ke tipe data list
+'''
+
+# mengakses *args
+def string(*data):
+    list_data = list(data) # kita ubah tipe data args menjadi list dan memasukannya ke variabel lain terlebih dahulu 
+    list_data.append("Hey") # kita juga bisa menambahkan data baru ke *argsnya dengan cara yang sama seperti menambah data dalam list
+    for i in list_data:
+        print(f"{i}")
+        
+string("Hello", "Hi", "Hola")
