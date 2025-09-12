@@ -80,8 +80,8 @@ while True:
             if hasil: # jika list hasil ini tidak kosong, maka sistem akan menampilkan semua data yang cocok (judul dan penulisnya serupa ataupun hampir serupa)
                 title = f"│ {'Kode':<5} {'Judul':<20} {'Penulis':<20} {'Stok total':<11} {'Stok tersedia':<14} │"
                 
-                print("Hasil pencarian:")
-                print(f'\n┌{"─" * (len(title) - 2)}┐')
+                print("\nHasil pencarian:")
+                print(f'┌{"─" * (len(title) - 2)}┐')
                 print(title)
                 print(f'├{"─" * (len(title) - 2)}┤')
                 for kode, buku in hasil:

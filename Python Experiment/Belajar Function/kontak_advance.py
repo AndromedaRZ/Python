@@ -45,7 +45,7 @@ while True:
             '''fungsi menambah kontak'''
             KEY = nama # nama yang diinput akan menjadi KEY dari pemilik nomor yang ditambahkan            
             kontak_dict[KEY] = kontak_sementara.copy()
-
+        
         nama = input("Masukkan nama kontak: ").capitalize()
         nomor = input("Masukkan nomor telepon: ")
         

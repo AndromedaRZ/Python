@@ -1,7 +1,5 @@
 '''Kalkulator mata uang'''
 
-from decimal import Decimal, ROUND_HALF_UP
-
 # kurs terhadap IDR (1 unit FX = x Rupiah)
 kurs = {
     "USD": 16400, # 1 dolar amerika = Rp16.400
@@ -23,11 +21,6 @@ def idr_to_fx(jumlah_idr: float, kode_fx: str) -> float:
     '''fungsi mengubah idr ke fx'''
     hasil = jumlah_idr / kurs[kode_fx]
     return hasil
-        
-# def bulatkan(nominal: float, desimal: int) -> float:
-    '''fungsi membulatkan fx'''
-    q = Decimal(10) ** -desimal
-    return float(Decimal(nominal).quantize(q, rounding=ROUND_HALF_UP))
 
 def format_idr(nominal):
     '''fungsi mengatur format idr'''
@@ -40,10 +33,14 @@ def fx_to_idr(jumlah_fx: float, kode_fx: str):
 
 def format_fx(nominal, simbol, desimal):
     '''fungsi mengatur format fx'''
-    nilai = round(nominal, desimal)
-    nilai = f"{nilai:.{desimal}f}".rstrip('0').rstrip('.')
-    return f"{nilai}{simbol}"
-
+    nilai = round(nominal, 2)
+    if simbol == "¥":
+        nilai = int(nilai)
+        nilai = f"{nilai:,}".replace(",",".")
+        return f"{simbol}{nilai}"
+    else:
+        nilai = f"{nilai:,.2f}".replace(",",".")
+        return f"{simbol}{nilai}"
 
 while True:
     print('''
@@ -58,9 +55,12 @@ while True:
 # ================================================================================
 # 1. Melihat dafar kurs
     if choice == '1':
+        print("======================")
         for KEY, money in kurs.items():
-            print(f"{KEY}: 1 {KEY} = {money}")
-            
+            print(f"{KEY}: {mata_uang[KEY]['simbol']}1 = Rp{money:,}".replace(",","."))
+
+        print("======================")
+
 # ================================================================================
 # 2. Konversi rupiah ke fx         
     if choice == '2':
@@ -92,7 +92,6 @@ while True:
 
         print(f"{jumlah_idr} bila dikonversi ke {kode_fx} akan menjadi {hasil}")
 
-
 # ================================================================================
 # 3. Konversi fx ke rupiah     
     if choice == '3':
@@ -111,7 +110,10 @@ while True:
             kode_fx = "JPY"
         elif conv == '4':
             kode_fx = "SGD"
-        
+        else:
+            print("Masukkan input hanya dari 1 sampai 4!")
+            continue
+
         jumlah_fx = float(input(f"Masukkan nilai uang mata uang dalam {kode_fx}: "))
         
         while jumlah_fx <= 0:
@@ -135,8 +137,6 @@ while True:
         print("4. SGD (Singapore Dollar)")
         conv = input("Pilih mata uang yang ingin dikonversi [1/2/3/4]: ")
         
-        
-        
         if conv == '1':
             kode_fx_awal = "USD"
             jumlah_fx = float(input(f"Masukkan nilai mata uang dalam {kode_fx_awal}: "))
@@ -157,6 +157,9 @@ while True:
                 kode_fx = "JPY"
             elif conv == '3':
                 kode_fx = "SGD"
+            else:
+                print("Input tidak valid!")
+                continue
                 
         elif conv == '2':
             kode_fx_awal = "EUR"
@@ -178,6 +181,9 @@ while True:
                 kode_fx = "JPY"
             elif conv == '3':
                 kode_fx = "SGD"
+            else:
+                print("Input tidak valid!")
+                continue
             
         elif conv == '3':
             kode_fx_awal = "JPY"
@@ -199,6 +205,9 @@ while True:
                 kode_fx = "EUR"
             elif conv == '3':
                 kode_fx = "SGD"
+            else:
+                print("Input tidak valid!")
+                continue
             
         elif conv == '4':
             kode_fx_awal = "SGD"
@@ -220,7 +229,14 @@ while True:
                 kode_fx = "EUR"
             elif conv == '3':
                 kode_fx = "JPY"
+            else:
+                print("Input tidak valid!")
+                continue
         
+        else:
+            print("Input tidak valid!")
+            continue
+
         jadi_idr = fx_to_idr(jumlah_fx, kode_fx_awal)
         jumlah_fx = format_fx(jumlah_fx, mata_uang[kode_fx_awal]['simbol'], mata_uang[kode_fx_awal]['desimal'])
         hasil = idr_to_fx(jadi_idr, kode_fx)
