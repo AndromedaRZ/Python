@@ -35,6 +35,8 @@ def lihat_produk():
     
 def tambah_produk(**data):
     daftar_produk.append(data)
+    
+    print("\nProduk berhasil ditambahkan.")
 
 def cari_ubah_produk():
     if not daftar_produk:
@@ -169,7 +171,7 @@ while True:
                 barang_sudah_ada = True
         
         if barang_sudah_ada:
-            print("Barang tersebut sudah tersedia!")
+            print("\nBarang tersebut sudah tersedia!")
             continue
         
         harga = int(input("Masukkan harga dari barang tersebut: "))
