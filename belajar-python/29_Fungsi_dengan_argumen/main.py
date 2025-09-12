@@ -45,9 +45,15 @@ def say_hi(list_peserta):
         print(f"Yang terhormat {i}")
         
   
-# kita juga menambahkan for loop di dalam fungsi say hi, sehingga parameter yang kita masukkan akan menampilkan data setiap looping sesuai dengan program yang kita buat di dalam fungsi say hi      
+# kita juga menambahkan for loop di dalam fungsi say hi, sehingga parameter yang kita masukkan akan menampilkan data setiap looping sesuai dengan program yang kita buat di dalam fungsi say hi
 # fungsi say hi akan menampilkan setiap data di dalam list dari variabel yang kita masukkan ke dalam parameter fungsinya ketika kita memanggil fungsi say hi        
 
 boyband = ['ucup','joko','dudung']
 
 say_hi(boyband)
+
+# Sedikit penjelasan untuk argument dan parameter
+# Parameter adalah variabel saat mendefinisikan fungsi
+# Sedangkan argument adalah nilai yang dikirim saat memanggil fungsi
+
+# Jadi, parameter = dimasukkan ketika membuat fungsi, dan argument = dimasukkan ketika memanggil fungsi
