@@ -10,7 +10,7 @@ print(f"hasil fungsi kuadrat = {f_kuadrat(3)}")
 # dengan lambda
 # output = lambda argument: expression
 
-kuadrat = lambda angka : angka ** 2
+kuadrat = lambda angka: angka ** 2
 print(f"hasil dari lambda kuadrat = {kuadrat(5)}")
 
 pangkat = lambda num, pow : num ** pow
@@ -29,7 +29,7 @@ print(f"sorted list by len = {data_list}")
 
 # sorting pakai lambda
 data_list = ['Luna','Zidane','Andre']
-data_list.sort(key=lambda nama:len(nama))
+data_list.sort(key=lambda nama: len(nama))
 print(f"sorted list by lambda = {data_list}")
 
 # filter
@@ -42,20 +42,20 @@ def kurang_dari_lima(angka):
 data_angka_baru = list(filter(kurang_dari_lima,data_angka))
 
 # contoh menggunakan lambda
-data_angka_baru = list(filter(lambda x:x < 7, data_angka))
+data_angka_baru = list(filter(lambda x: x < 7, data_angka))
 
 print(data_angka_baru)
 
 # kasus genap
-data_genap = list(filter(lambda x:(x % 2 == 0), data_angka))
+data_genap = list(filter(lambda x: (x % 2 == 0), data_angka))
 print(data_genap)
 
 # kasus ganjil
-data_ganjil = list(filter(lambda x:(x % 2 != 0), data_angka))
+data_ganjil = list(filter(lambda x: (x % 2 != 0), data_angka))
 print(data_ganjil)
 
 # kelipatan 3
-data_3 = list(filter(lambda x:(x % 3 == 0), data_angka))
+data_3 = list(filter(lambda x: (x % 3 == 0), data_angka))
 print(data_3)
 
 '''anonymous function'''
@@ -70,7 +70,7 @@ print(f"hasil perpangkatan dari fungsi biasa = {pangkat(5,2)}")
 # dengan currying
 
 def pangkat(n):
-    return lambda angka:angka ** n
+    return lambda angka: angka ** n
 
 pangkat2 = pangkat(2)
 print(f"pangkat 2 = {pangkat2(5)}")
@@ -81,3 +81,27 @@ print(f"pangkat 3 = {pangkat3(3)}")
 print(f"pangkat bebas = {pangkat(2)(3)}") # jika ditempatkan dalam 1 baris yang sama
 # artinya 3 pangkat 2 karena angka di depan menunjukkan pangkatnya
 # dan angka di belakang menunjukkan bilangannya
+
+# Lambda function = fungsi anonim yang bersifat sekali pakai
+#                   lambda bisa mengambil banyak argument, akan tetapi hanya bisa menetapkan satu exspression
+#                   --------------
+#                   lambda parameters: expression
+
+double = lambda x: x * 2 # lambda sederhana
+print(double(10))
+
+add = lambda x, y: x + y # lambda dengan banyak parameter
+print(add(10,30))
+
+max_value = lambda x, y: x if x > y else y # lambda dengan if else, output yang dihasilkan akan menunjukkan angka terbesar
+print(max_value(8,9))
+
+min_value = lambda x, y: x if x < y else y # output yang dihasilkan akan menunjukkan angka terkecil
+print(min_value(8, 10))
+
+full_name = lambda first_name, last_name: first_name + ' ' + last_name # lambda dengan operasi string
+print(full_name("Ricky", "Ardiansyah"))
+
+nama_depan = str(input("Masukkan nama depan: "))
+nama_belakang = str(input("Masukkan nama belakang: "))
+print(full_name(nama_depan, nama_belakang)) # parameter dari lambda juga bisa kita isi dengan variabel hasil dari input user

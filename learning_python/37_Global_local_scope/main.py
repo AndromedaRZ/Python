@@ -46,7 +46,7 @@ def ubah(nilai_baru, nama_baru):
 
 # jika kita tidak menambahkan 'global' di dalam fungsinya
 # variabel tersebut akan dianggap sebagai local variabel
-# dan tidak bisa diakses dengan cara seperti di atas
+# dan tidak bisa diakses di luar fungsi tersebut
 
 print(f"Sebelum {angka, name}")
 ubah(10, "Otong")
