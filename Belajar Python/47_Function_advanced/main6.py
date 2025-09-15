@@ -84,19 +84,73 @@ print(f"filter angka ganjil dengan lambda = {data_angka_baru}")
 data_angka_baru = list(filter(lambda x:(x % 3 == 0), data_angka))
 print(f"filter angka kelipatan tiga dengan lambda = {data_angka_baru}")
 
+# filter angka kurang dari 5
+def kurang_dari(n):
+    return lambda x: x < n
+
+kurang_dari_5 = kurang_dari(5)
+
+data_angka_baru = list(filter(kurang_dari_5, data_angka))
+print(f"filter angka kurang dari 5 = {data_angka_baru}")
+
 '''
 Anonymus
 '''
 
 # currying, Currying adalah teknik memecah sebuah fungsi yang punya banyak parameter menjadi beberapa fungsi yang masing-masing hanya menerima satu parameter.
 
-# contoh
+# fungsi pangkat
+# fungsi biasa
+
+def pangkat(angka, n):
+    hasil = angka ** n
+    return hasil
+
+data_hasil = pangkat(5, 2)
+print(f"\nfungsi pangkat biasa = {data_hasil}")
+
+# menggunakan currying
 def pangkat(n):
     return lambda angka:angka ** n
 
 pangkat2 = pangkat(2) # membuat fungsi terpisah untuk memangkatkan 2 suatu bilangan atau angka
-print(f"\npangkat dua = {pangkat2(5)}") # memangkatkan angka 5 dengan pangkat 2 yang tadi dibuat
+print(f"pangkat dua (currying) = {pangkat2(5)}") # memangkatkan angka 5 dengan pangkat 2 yang tadi dibuat
 
 pangkat3 = pangkat(3) # membuat fungsi terpisah untuk memangkatkan 3 suatu bilangan atau angka
-print(f"pangkat tiga = {pangkat3(5)}") # memangkatkan angka 5 dengan pangkat 3 yang tadi dibuat
+print(f"pangkat tiga (currying) = {pangkat3(5)}") # memangkatkan angka 5 dengan pangkat 3 yang tadi dibuat
 
+# fungi penjumlahan 3 angka
+# fungsi biasa
+def tambah(a, b, c):
+    return a + b + c
+
+print(f"fungsi tambah biasa = {tambah(1, 2, 3)}")
+
+# menggunakan currying
+def tambah(a):
+    def angka1(b):
+        def angka2(c):
+            return a + b + c
+        return angka2
+    return angka1
+
+print(f"fungsi tambah (currying) = {tambah(1)(2)(3)}")
+            
+# fungsi kali
+# fungsi biasa
+
+def kali(a, b):
+    return a * b
+
+print(f"fungsi kali biasa = {kali(10, 3)}")
+
+# menggunakan currying (perkalian bertahap)
+
+def kali(n):
+    return lambda x:x * n
+
+kali2 = kali(2)
+kali3 = kali(3)
+
+print(f"Menggunakan currying kali 2 = {kali2(5)}")
+print(f"Menggunakan currying kali 3 = {kali3(5)}")
