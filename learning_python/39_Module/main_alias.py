@@ -8,6 +8,9 @@ from matematika import pangkat as apa_saja_terserah
 # 'as' juga berguna untuk memudahkan pengetikan kita ketika menggunakan fungsi tersebut
 # untuk aturan penamaan alias hampir mirip seperti cara penamaan variabel dan bersifat case sensitive
 
+# ketika kita sudah menetapkan alias pada salah satu fungsi
+# maka jika kita ingin memanggil fungsi tersebut harus menggunakan nama aliasnya, nama fungsi sebelumnya tidak akan bisa digunakan lagi
+
 import matematika as math # <- nama module juga bisa kita ganti menggunakan alias
 # hanya saja ketika menggunakan fungsinya tetap perlu menambahkan namespace-nya
 
