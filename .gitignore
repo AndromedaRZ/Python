@@ -4,4 +4,4 @@ __pycache__/
 
 # ignore ekstensi spesifik
 *.json
-
+*.txt
