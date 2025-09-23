@@ -178,7 +178,7 @@ title = "│ SELAMAT DATANG DI TOKO ELEKTRONIK │"
 print(f"┌{'─'*(len(title) - 2)}┐")
 print(title)
 print(f"└{'─'*(len(title) - 2)}┘")
-    
+
 while True:
     title = " MENU BELANJA "
     print()
