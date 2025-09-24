@@ -73,5 +73,3 @@ def menu_konversi_panjang():
     satuan_akhir = pilihan.get(akhir, None) # mengakses key dari dicitonary 'pilihan' menggunakan nilai dari variabel 'akhir' agar bisa dicocokan dengan key yang ada di dalam dictionary 'pilihan'
     
     konversi_panjang(nilai=nilai, dari=satuan_awal, ke=satuan_akhir)
-
-menu_konversi_panjang()
