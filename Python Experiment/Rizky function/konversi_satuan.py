@@ -1,6 +1,6 @@
 # Program konversi satuan (berat, suhu, panjang) menggunakan function
 
-import os, suhu, berat
+import os, suhu, berat, panjang
 os.system("clear")
 
 title = "│ PROGRAM KONVERSI SATUAN │"
@@ -15,7 +15,7 @@ while True:
 2. Konversi Berat
 3. Konversi Panjang
 4. Keluar''')
-    choice = input("Pilih konversi satuan [1-3]: ")
+    choice = input("Pilih menu [1-4]: ")
     
 # ================================================================================================================================
 # Jika user memilih konversi satuan suhu    
@@ -45,7 +45,9 @@ while True:
 # ================================================================================================================================
 # Jika user memilih konversi satuan panjang   
     if choice == '3':
-        continue
+        panjang_awal = panjang.panjang_awal()
+        nilai, satuan_awal, nama_akhir, akhir = panjang.panjang_akhir(panjang_awal)
+        panjang.konversi_panjang(nilai=nilai, dari=satuan_awal, ke=akhir)
     
 # ================================================================================================================================
 # Jika user memilih untuk keluar program
