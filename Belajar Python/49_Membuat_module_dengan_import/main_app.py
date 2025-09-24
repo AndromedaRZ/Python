@@ -1,0 +1,2 @@
+# membuat module dengan import
+
