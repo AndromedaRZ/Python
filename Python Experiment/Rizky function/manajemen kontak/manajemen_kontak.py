@@ -1,5 +1,7 @@
 # Projek manajemen kontak menggunakan function
 
+from tambah_kontak import tambah_kontak
+
 data_kontak = {}
 
 title = "│ DATA KONTAK PRIBADI │"
@@ -22,12 +24,13 @@ while True:
 # =======================================================================================================================================
 # Jika user memilih untuk menambahkan kontak
     if choice == '1':
-        continue
+        tambah_kontak(data_kontak)
     
 # =======================================================================================================================================
 # Jika user memilih untuk melihat seluruh kontak yang ada
     if choice == '2':
-        continue
+        for kontak, value in data_kontak.items():
+            print(value['nama'], value['nomor'], value['email'])
     
 # =======================================================================================================================================
 # Jika user memilih untuk mengubah (mengedit) kontak yang ada
