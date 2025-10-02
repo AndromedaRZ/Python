@@ -1,6 +1,6 @@
 # Projek manajemen kontak menggunakan function
 
-from tambah_kontak import tambah_kontak
+import tambah_kontak, display_kontak, cari_ubah
 
 data_kontak = {}
 
@@ -10,6 +10,7 @@ print(title)
 print(f"└{'─'*(len(title) - 2)}┘")
 
 while True:
+    print()
     title = "   MENU KONTAK   "
     print("-" * (len(title)))
     print(f"{title}")
@@ -24,27 +25,48 @@ while True:
 # =======================================================================================================================================
 # Jika user memilih untuk menambahkan kontak
     if choice == '1':
-        tambah_kontak(data_kontak)
+        tambah_kontak.tambah_kontak(data_kontak)
     
 # =======================================================================================================================================
 # Jika user memilih untuk melihat seluruh kontak yang ada
     if choice == '2':
-        for kontak, value in data_kontak.items():
-            print(value['nama'], value['nomor'], value['email'])
+        display_kontak.display_kontak(data_kontak)
     
 # =======================================================================================================================================
 # Jika user memilih untuk mengubah (mengedit) kontak yang ada
     if choice == '3':
-        continue
+        cari_ubah.cari_ubah(data_kontak)
     
 # =======================================================================================================================================
 # Jika user memilih untuk menghapus kontak yang ada
     if choice == '4':
-        continue
-    
+        if not data_kontak:
+            title = f"│ Daftar kontak anda masih kosong! │"
+            print(f"\n┌{'─'* (len(title) - 2)}┐")
+            print(title)
+            print(f"└{'─'* (len(title) - 2)}┘")
+        
+        else:
+            dihapus = input("Masukan nama kontak yang ingin anda hapus: ")    
+            if dihapus not in data_kontak:
+                title = f"│ Kontak tersebut tidak ada! │"
+                print(f"\n┌{'─'* (len(title) - 2)}┐")
+                print(title)
+                print(f"└{'─'* (len(title) - 2)}┘")
+            
+            else:
+                del data_kontak[dihapus]
+                title = f"│ Kontak berhasil dihapus! │"
+                print(f"\n┌{'─'* (len(title) - 2)}┐")
+                print(title)
+                print(f"└{'─'* (len(title) - 2)}┘") 
+        
 # =======================================================================================================================================
 # Jika user memilih untuk menambahkan kontak
-    if choice == '5':
+    if choice == '5': 
         break
     
-print("Program kontak berhenti")
+title = f"│ Program kontak dihentikan │"
+print(f"\n┌{'─'* (len(title) - 2)}┐")
+print(title)
+print(f"└{'─'* (len(title) - 2)}┘")

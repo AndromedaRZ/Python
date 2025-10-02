@@ -6,6 +6,7 @@ import re
 dict_contact= {}
 
 def tambah_kontak(dict_kontak,**sementara):
+    '''fungsi untuk memambahkan kontak baru'''
     while True:
         nama = input("Masukan nama kontak: ")
         sementara['nama'] = nama
@@ -28,11 +29,20 @@ def tambah_kontak(dict_kontak,**sementara):
         
         for kontak in dict_kontak.values():
             if (kontak['nama'] == nama and kontak['nomor'] == nomor and kontak['email'] == email):
-                print("Kontak tersebut sudah ada!")
+                title = f"│ Kontak tersbut sudah ada !│"
+                print(f"\n┌{'─'* (len(title) - 2)}┐")
+                print(title)
+                print(f"└{'─'* (len(title) - 2)}┘")
                 return None
         
         KEY = sementara['nama']
         dict_kontak[KEY] = sementara.copy()
-        return sementara
+        
+        title = f"│ Kontak berhasil ditambahkan │"
+        print(f"\n┌{'─'* (len(title) - 2)}┐")
+        print(title)
+        print(f"└{'─'* (len(title) - 2)}┘")
+        break
+        
 
 
