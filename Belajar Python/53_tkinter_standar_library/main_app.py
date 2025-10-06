@@ -29,7 +29,7 @@ input_frame = ttk.Frame(window)
 input_frame.pack(padx=10, pady=10, fill='x', expand=True)
 
 # komponen - komponen
-# 1. label nama depan
+# 1. Label nama depan
 nama_depan_label = ttk.Label(input_frame, text="Nama Depan")
 nama_depan_label.pack(padx=10, fill='x', expand=True)
 
@@ -37,7 +37,7 @@ nama_depan_label.pack(padx=10, fill='x', expand=True)
 nama_depan_entry = ttk.Entry(input_frame, textvariable=NAMA_DEPAN)
 nama_depan_entry.pack(padx=10, fill='x', expand=True)
 
-# 3. label nama belakang
+# 3. Label nama belakang
 nama_belakang_label = ttk.Label(input_frame, text="Nama Belakang")
 nama_belakang_label.pack(padx=10, fill='x', expand=True)
 
