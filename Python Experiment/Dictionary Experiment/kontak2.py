@@ -46,7 +46,7 @@ while True:
                 NOMOR = kontak_dict[KEY ]['nomor']
                 print(f'│ {i+1}. │ {NAMA:<13}│ {NOMOR:<14}│')
             print(f'└────┴──────────────┴───────────────┘')
-        
+    
     elif choice == '2': # jika user memilih ingin menambahkan kontak baru
         
         kontak['nama'] = input("\nMasukan nama kontak: ")

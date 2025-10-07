@@ -1,0 +1,1 @@
+print(f"fungsi print ini dari file program_print.py")
