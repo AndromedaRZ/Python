@@ -1,7 +1,9 @@
 # ignore folder/direcorty
 __pycache__/
 .ipynb_checkpoints
+.vscode
 
 # ignore ekstensi spesifik
 *.json
 *.txt
+*.venv
