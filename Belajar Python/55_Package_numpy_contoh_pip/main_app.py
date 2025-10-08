@@ -22,12 +22,14 @@ matrix_b = np.array([(1, 2), (3, 4)])
 print(f'matrix b = {matrix_b}')
 print(f'matrix b x 2 = \n{matrix_b*2}')
 
-zeros_c = np.zeros((2, 2))
+# membuat array berisi 0
+zeros_c = np.zeros((2, 2)) 
 print(f'zeros c = \n{zeros_c}')
 
-ones_d = np.ones((2, 2))
+# membuat array berisi 1
+ones_d = np.ones((2, 2)) 
 print(f'ones d = \n{ones_d}')
 
 # menjumlahkan seluruh operasi matrix tadi
 jumlah = matrix_b + matrix_b**2 + ones_d
-print(f'jumlah = \n{jumlah}') 
+print(f'\n{matrix_b} + \n{matrix_b*2} + \n{ones_d} = \n{jumlah}') 

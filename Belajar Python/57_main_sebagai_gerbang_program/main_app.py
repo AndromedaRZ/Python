@@ -22,3 +22,11 @@ if __name__ == '__main__':
     
 ## import pacakge
 import package
+
+## import modul
+from package import modul
+
+hasil_tambah = modul.tambah(10, 5)
+hasil_kurang = modul.kurang(10, 5)
+print(f'hasil tambah = {hasil_tambah}')
+print(f'hasil kurang = {hasil_kurang}')
