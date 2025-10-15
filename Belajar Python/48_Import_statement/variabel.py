@@ -1,1 +1,0 @@
-data = "Ucup sedang menjinakkan python"
