@@ -1,37 +1,52 @@
-# Sistem perpustakaan digital
 
-import os
+from Models import Hero, Enemy
 
-if __name__ == '__main__':
-    sistem_operasi = os.name
-    
-    match sistem_operasi:
-        case 'posix': os.system("clear")
-        case 'nt': os.system("cls")
+char_name = input("Masukkan nama untuk karakter kamu: ").capitalize()
+print("\nPilih kelas untuk karakter kamu")
+print("1. Knight")
+print("2. Archer")
+print("3. Sorcerer")
+char_class = input("Pilihan kamu: ")
+
+match char_class:
+    case '1':
+        hero1 = Hero.Knight(char_name)
+    case '2':
+        hero1 = Hero.Archer(char_name)
+    case '3':
+        hero1 = Hero.Sorcerer(char_name)
         
-    while True:
-        
-        
-         
-        print("=== Sistem Perpustakaan Digital ===")
-        print("1. Tambah Buku")
-        print("2. Tambah Anggota")
-        print("3. Pinjam Buku")
-        print("4. Kembalikan Buku")
-        print("5. Tampilkan Semua Buku")
-        print("6. Keluar")
-        option = input("Masukkan opsi [1-6]: ")
-        
-        match option:
-            case '1':
-                print("1. Tambah Buku")
-            case '2':
-                print("2. Tambah Anggota")
-            case '3':
-                print("3. Pinjam Buku")
-            case '4':
-                print("4. Kembalikan Buku")
-            case '5':
-                print("5. Tampilkan Semua Buku")
-            case '6':
-                print("6. Keluar")
+hero1.showInfo()
+
+print(hero1.getArmor)
+tambah = 170
+hero1.gainExp = tambah
+print(tambah // 100)
+print(tambah % 100)
+hero1.showInfo()
+
+
+print("\nSiapa yang ingin kamu lawan?")
+print("1. Goblin")
+print("2. Skeleton")
+print("3. Necromancer")
+print("4. Berserker")
+enemy_pick = input("Pilihan kamu: ")
+
+# hp_amount = int(input("Masukkan jumlah HP musuh: "))
+# atk_amount = int(input("Masukkan jumlah ATK musuh: "))
+# def_amount = int(input("Masukkan jumlah DEF musuh: "))
+
+match enemy_pick:
+    case '1':
+        enemy1 = Enemy.Goblin('Goblin')
+    case '2':
+        enemy1 = Enemy.Skeleton('Skeleton')
+    case '3':
+        enemy1 = Enemy.Necromancer('Necromancer')
+    case '4':
+        enemy1 = Enemy.Berserker('Berserker')
+
+print()
+enemy1.showEnemyInfo()
+print()

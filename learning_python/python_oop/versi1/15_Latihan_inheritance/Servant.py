@@ -16,7 +16,8 @@ class Servant:
         print(f"\tATK : {self.__atk}")
         print(f"\tDEF : {self.__armor}")
         
-        
+    
+    # setter
     @property # decorator ini berguna agar kita bisa men-setting attribute yang ada di bawahnya
     def hp_pool(self):
         pass
