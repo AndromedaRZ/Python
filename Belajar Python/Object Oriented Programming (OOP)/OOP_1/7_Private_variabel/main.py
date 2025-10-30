@@ -15,3 +15,4 @@ class Hero:
                 
 mahou_shoujo = Hero("Mahou Shoujo", 100)
 print(mahou_shoujo.__dict__)
+
