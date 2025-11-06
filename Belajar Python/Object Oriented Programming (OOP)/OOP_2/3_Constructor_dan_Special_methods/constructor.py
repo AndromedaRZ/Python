@@ -43,7 +43,7 @@ class Mahasiswa:
     nim = 0
     nama = ""
     
-    def __init__(self, nim, nama): # manual setup
+    def __init__(self, nim, nama): # manual setup (consctructor)
         self.nim = nim
         self.nama = nama
     
